@@ -1,14 +1,42 @@
-import React, { useMemo, useState } from 'react'
-import { motion } from 'framer-motion'
-import { Calendar, CheckCircle2, ChevronDown, ChevronRight, ExternalLink, Menu, Phone, Play, Star, Users } from 'lucide-react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import {
+  Calendar,
+  CheckCircle2,
+  ChevronDown,
+  ChevronRight,
+  ExternalLink,
+  Menu,
+  Phone,
+  Play,
+  Star,
+  Users,
+  GraduationCap,
+  BadgeCheck,
+  MapPin,
+  Sparkles,
+} from 'lucide-react'
 import Spline from '@splinetool/react-spline'
 
 const Container = ({ children }) => (
   <div className="mx-auto w-full max-w-7xl px-6 md:px-8">{children}</div>
 )
 
+function useScrollY() {
+  const [y, setY] = useState(0)
+  useEffect(() => {
+    const onScroll = () => setY(window.scrollY)
+    onScroll()
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+  return y
+}
+
 function Navbar() {
   const [open, setOpen] = useState(false)
+  const y = useScrollY()
+  const solid = y > 40
   const navItems = [
     { label: 'Agenda', href: '#agenda' },
     { label: 'Mentors', href: '#mentors' },
@@ -16,11 +44,18 @@ function Navbar() {
     { label: 'Testimonials', href: '#testimonials' },
   ]
   return (
-    <div className="sticky top-0 z-40 backdrop-blur-md bg-black/40 border-b border-white/10">
+    <div
+      className={`sticky top-0 z-40 transition-all ${
+        solid ? 'bg-black/70 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'
+      }`}
+    >
       <Container>
         <div className="flex items-center justify-between py-4">
-          <a href="#" className="flex items-center gap-2">
-            <div className="h-6 w-6 rounded-md bg-gradient-to-tr from-zinc-200 via-white to-zinc-300" />
+          <a href="#" className="group relative flex items-center gap-2">
+            <div className="relative h-6 w-6 rounded-md overflow-hidden">
+              <span className="absolute inset-0 bg-gradient-to-tr from-zinc-200 via-white to-zinc-300" />
+              <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.6),transparent_40%)]" />
+            </div>
             <span className="text-sm tracking-widest text-zinc-200">VETERAN MENTORS</span>
           </a>
           <div className="hidden md:flex items-center gap-8">
@@ -37,18 +72,25 @@ function Navbar() {
             <Menu className="h-5 w-5 text-white" />
           </button>
         </div>
-        {open && (
-          <div className="md:hidden grid gap-2 pb-4">
-            {navItems.map((n) => (
-              <a key={n.href} href={n.href} className="text-zinc-300 hover:text-white transition-colors text-sm py-2 border-t border-white/10">
-                {n.label}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="md:hidden grid gap-2 pb-4"
+            >
+              {navItems.map((n) => (
+                <a key={n.href} href={n.href} className="text-zinc-300 hover:text-white transition-colors text-sm py-2 border-t border-white/10">
+                  {n.label}
+                </a>
+              ))}
+              <a href="#book" className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-zinc-100 transition-colors">
+                Book 1:1 <ChevronRight className="h-4 w-4" />
               </a>
-            ))}
-            <a href="#book" className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-zinc-100 transition-colors">
-              Book 1:1 <ChevronRight className="h-4 w-4" />
-            </a>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </Container>
     </div>
   )
@@ -122,23 +164,60 @@ function Hero() {
   )
 }
 
+const SectionHeader = ({ eyebrow, title, subtitle }) => (
+  <div>
+    {eyebrow && (
+      <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-widest text-zinc-300">
+        <Sparkles className="h-3.5 w-3.5" /> {eyebrow}
+      </div>
+    )}
+    <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-white">{title}</h2>
+    {subtitle && <p className="mt-3 text-zinc-400 max-w-2xl">{subtitle}</p>}
+  </div>
+)
+
+const GlassCard = ({ children, className = '' }) => (
+  <div className={`rounded-2xl bg-white/[0.06] ring-1 ring-white/10 ${className}`}>
+    {children}
+  </div>
+)
+
 function Stats() {
   const stats = [
-    { label: 'Students Guided', value: '2,300+' },
-    { label: 'Schools & Coachings', value: '40+' },
-    { label: 'Avg. Session Rating', value: '4.9/5' },
-    { label: 'Cities Reached', value: '18' },
+    { label: 'Students Guided', value: '2,300+', icon: Users },
+    { label: 'Schools & Coachings', value: '40+', icon: GraduationCap },
+    { label: 'Avg. Session Rating', value: '4.9/5', icon: Star },
+    { label: 'Cities Reached', value: '18', icon: MapPin },
   ]
   return (
-    <section className="bg-black border-t border-white/10">
+    <section className="relative bg-black border-t border-white/10">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(255,255,255,0.06),transparent_60%)]" />
       <Container>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-14">
-          {stats.map((s) => (
-            <div key={s.label} className="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 text-center">
-              <p className="text-2xl md:text-3xl font-semibold text-white">{s.value}</p>
-              <p className="mt-2 text-sm text-zinc-400">{s.label}</p>
-            </div>
-          ))}
+        <div className="py-16">
+          <SectionHeader
+            eyebrow="Snapshot"
+            title="Outcomes that matter"
+            subtitle="Focused guidance with real reach and consistently high feedback."
+          />
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((s) => (
+              <motion.div
+                key={s.label}
+                whileHover={{ y: -4 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                className="relative"
+              >
+                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-white/20/10 to-transparent opacity-40" />
+                <GlassCard className="relative p-6 text-center">
+                  <div className="mx-auto mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-white/10">
+                    {React.createElement(s.icon, { className: 'h-4 w-4 text-white/80' })}
+                  </div>
+                  <p className="text-2xl md:text-3xl font-semibold text-white">{s.value}</p>
+                  <p className="mt-1 text-sm text-zinc-400">{s.label}</p>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </Container>
     </section>
@@ -165,16 +244,24 @@ function Agenda() {
     },
   ]
   return (
-    <section id="agenda" className="bg-black">
+    <section id="agenda" className="relative bg-black">
       <Container>
         <div className="py-20">
-          <h2 className="text-3xl md:text-4xl font-semibold text-white">Agenda • Master Sessions</h2>
-          <p className="mt-3 text-zinc-400 max-w-2xl">
-            Deep-dives designed for ambitious students and parents. Minimal fluff, maximum clarity.
-          </p>
+          <SectionHeader
+            eyebrow="Agenda"
+            title="Master Sessions"
+            subtitle="Deep-dives designed for ambitious students and parents. Minimal fluff, maximum clarity."
+          />
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {topics.map((t) => (
-              <div key={t.title} className="group rounded-2xl bg-gradient-to-b from-white/10 to-white/5 p-[1px]">
+            {topics.map((t, i) => (
+              <motion.div
+                key={t.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ delay: i * 0.05 }}
+                className="group rounded-2xl p-[1px] bg-gradient-to-b from-white/15 to-white/5"
+              >
                 <div className="h-full rounded-2xl bg-black p-6 ring-1 ring-white/10">
                   <div className="flex items-start justify-between gap-6">
                     <h3 className="text-white text-lg font-medium leading-snug max-w-[80%]">{t.title}</h3>
@@ -182,7 +269,7 @@ function Agenda() {
                   </div>
                   <p className="mt-3 text-sm text-zinc-400">{t.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -196,36 +283,60 @@ function Mentors() {
     {
       name: 'Swapnil',
       title: 'IIIT Hyderabad (B.Tech) • Ex Apple • Ex Google London',
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=300&auto=format&fit=crop',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop',
+      badges: ['CLD/CHD', 'BigTech', 'Product']
     },
     {
       name: 'Manas',
       title: 'Veteran Mentor • Tech + Product',
-      avatar: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=300&auto=format&fit=crop',
+      avatar: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=600&auto=format&fit=crop',
+      badges: ['Strategy', 'Roadmaps']
     },
     {
       name: 'Nikita',
       title: 'IIIT Hyderabad CS • Ex Microsoft • Ex Indeed',
-      avatar: 'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=300&auto=format&fit=crop',
+      avatar: 'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=600&auto=format&fit=crop',
+      badges: ['CS/AI', 'Interview']
     },
   ]
   return (
-    <section id="mentors" className="bg-black border-t border-white/10">
+    <section id="mentors" className="relative bg-black border-t border-white/10">
       <Container>
         <div className="py-20">
-          <h2 className="text-3xl md:text-4xl font-semibold text-white">Meet the Mentors</h2>
-          <p className="mt-3 text-zinc-400 max-w-2xl">Handpicked guides with proven records in tech and education.</p>
+          <SectionHeader
+            eyebrow="Team"
+            title="Meet the Mentors"
+            subtitle="Handpicked guides with proven records in tech and education."
+          />
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {mentors.map((m) => (
-              <div key={m.name} className="rounded-2xl overflow-hidden bg-white/5 ring-1 ring-white/10">
-                <div className="h-56 w-full overflow-hidden">
-                  <img src={m.avatar} alt={m.name} className="h-full w-full object-cover" />
-                </div>
-                <div className="p-6">
-                  <p className="text-white text-lg font-medium">{m.name}</p>
-                  <p className="mt-1 text-sm text-zinc-400">{m.title}</p>
-                </div>
-              </div>
+            {mentors.map((m, i) => (
+              <motion.div
+                key={m.name}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06 }}
+                className="group relative overflow-hidden rounded-2xl"
+              >
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <GlassCard className="overflow-hidden">
+                  <div className="h-56 w-full overflow-hidden">
+                    <img src={m.avatar} alt={m.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between">
+                      <p className="text-white text-lg font-medium">{m.name}</p>
+                      <BadgeCheck className="h-5 w-5 text-white/70" />
+                    </div>
+                    <p className="mt-1 text-sm text-zinc-400">{m.title}</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {m.badges.map((b) => (
+                        <span key={b} className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[11px] text-zinc-300">{b}</span>
+                      ))}
+                    </div>
+                  </div>
+                </GlassCard>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -236,45 +347,54 @@ function Mentors() {
 
 function Offerings() {
   return (
-    <section id="offerings" className="bg-black border-t border-white/10">
+    <section id="offerings" className="relative bg-black border-t border-white/10">
       <Container>
         <div className="py-20">
-          <h2 className="text-3xl md:text-4xl font-semibold text-white">Offerings</h2>
+          <SectionHeader
+            eyebrow="What we offer"
+            title="Flexible formats for every need"
+            subtitle="Choose a free group masterclass for selected institutions or a focused 1:1 session."
+          />
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-2xl bg-white/5 ring-1 ring-white/10 p-8 flex flex-col justify-between">
-              <div>
-                <p className="text-white text-xl font-medium">Group Sessions</p>
-                <p className="mt-2 text-zinc-400">
-                  Free for handpicked elite coachings and schools. Invite us for an on-campus masterclass.
-                </p>
-              </div>
-              <a href="tel:+919999999999" className="mt-6 inline-flex items-center gap-2 w-max rounded-full bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-zinc-100 transition-colors">
-                <Phone className="h-4 w-4" /> +91 99999 99999
-              </a>
-            </div>
-
-            <div id="book" className="rounded-2xl bg-gradient-to-br from-white/10 to-white/[0.06] ring-1 ring-white/10 p-8">
-              <p className="text-white text-xl font-medium">1:1 Parent–Student Career Counseling</p>
-              <ul className="mt-4 space-y-2 text-sm text-zinc-300">
-                <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 mt-0.5 text-emerald-400" /> 45 minutes deep-dive tailored to your context</li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 mt-0.5 text-emerald-400" /> Actionable plan: exams, branches, colleges, timelines</li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 mt-0.5 text-emerald-400" /> Includes Q&A for parents and student</li>
-              </ul>
-              <div className="mt-6 flex items-center justify-between">
-                <div className="text-zinc-300">
-                  <p className="text-sm">Single session</p>
-                  <p className="text-2xl text-white font-semibold">₹1200</p>
+            <motion.div whileHover={{ y: -4 }} className="relative">
+              <GlassCard className="p-8 flex flex-col justify-between h-full">
+                <div>
+                  <p className="text-white text-xl font-medium">Group Sessions</p>
+                  <p className="mt-2 text-zinc-400">
+                    Free for handpicked elite coachings and schools. Invite us for an on-campus masterclass.
+                  </p>
                 </div>
-                <a
-                  href="https://calendly.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-zinc-100 transition-colors"
-                >
-                  <Calendar className="h-4 w-4" /> Book via Calendly <ExternalLink className="h-4 w-4" />
+                <a href="tel:+919999999999" className="mt-6 inline-flex items-center gap-2 w-max rounded-full bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-zinc-100 transition-colors">
+                  <Phone className="h-4 w-4" /> +91 99999 99999
                 </a>
-              </div>
-            </div>
+              </GlassCard>
+            </motion.div>
+
+            <motion.div whileHover={{ y: -4 }} id="book" className="relative">
+              <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-white/20 to-transparent opacity-40" />
+              <GlassCard className="relative p-8">
+                <p className="text-white text-xl font-medium">1:1 Parent–Student Career Counseling</p>
+                <ul className="mt-4 space-y-2 text-sm text-zinc-300">
+                  <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 mt-0.5 text-emerald-400" /> 45 minutes deep-dive tailored to your context</li>
+                  <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 mt-0.5 text-emerald-400" /> Actionable plan: exams, branches, colleges, timelines</li>
+                  <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 mt-0.5 text-emerald-400" /> Includes Q&A for parents and student</li>
+                </ul>
+                <div className="mt-6 flex items-center justify-between">
+                  <div className="text-zinc-300">
+                    <p className="text-sm">Single session</p>
+                    <p className="text-2xl text-white font-semibold">₹1200</p>
+                  </div>
+                  <a
+                    href="https://calendly.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-zinc-100 transition-colors"
+                  >
+                    <Calendar className="h-4 w-4" /> Book via Calendly <ExternalLink className="h-4 w-4" />
+                  </a>
+                </div>
+              </GlassCard>
+            </motion.div>
           </div>
         </div>
       </Container>
@@ -297,19 +417,29 @@ function Testimonials() {
     []
   )
   const [expanded, setExpanded] = useState(false)
-  const visible = expanded ? all : all.slice(0, 4)
+  const visible = expanded ? all : all.slice(0, 6)
   return (
-    <section id="testimonials" className="bg-black border-t border-white/10">
+    <section id="testimonials" className="relative bg-black border-t border-white/10">
       <Container>
         <div className="py-20">
-          <h2 className="text-3xl md:text-4xl font-semibold text-white">Testimonials</h2>
-          <p className="mt-3 text-zinc-400 max-w-2xl">Real notes from students and parents. Minimal, bento-style grid.</p>
+          <SectionHeader
+            eyebrow="Social proof"
+            title="What students and parents say"
+            subtitle="Short, honest notes captured after sessions."
+          />
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {visible.map((t, i) => (
-              <div key={i} className="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 flex flex-col justify-between">
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.03 }}
+                className="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 flex flex-col justify-between"
+              >
                 <p className="text-zinc-300">“{t.text}”</p>
                 <div className="mt-4 text-sm text-zinc-400">— {t.name}</div>
-              </div>
+              </motion.div>
             ))}
             <div className="rounded-2xl bg-gradient-to-br from-white/10 to-white/[0.06] ring-1 ring-white/10 p-6 flex items-center justify-center">
               <button onClick={() => setExpanded(!expanded)} className="inline-flex items-center gap-2 text-white/90 hover:text-white">
@@ -325,15 +455,21 @@ function Testimonials() {
 
 function Footer() {
   return (
-    <footer className="bg-black border-t border-white/10">
+    <footer className="relative bg-black border-t border-white/10">
       <Container>
-        <div className="py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-zinc-500 text-sm">
-          <p>© {new Date().getFullYear()} Veteran Mentors. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a href="#agenda" className="hover:text-zinc-300">Agenda</a>
-            <a href="#offerings" className="hover:text-zinc-300">Offerings</a>
-            <a href="#testimonials" className="hover:text-zinc-300">Testimonials</a>
+        <div className="py-12">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-3">
+              <div className="h-7 w-7 rounded-md bg-gradient-to-tr from-zinc-200 via-white to-zinc-300" />
+              <div className="text-sm text-zinc-400">Premium guidance for ambitious students.</div>
+            </div>
+            <div className="flex items-center gap-6 text-sm text-zinc-400">
+              <a href="#agenda" className="hover:text-zinc-200">Agenda</a>
+              <a href="#offerings" className="hover:text-zinc-200">Offerings</a>
+              <a href="#testimonials" className="hover:text-zinc-200">Testimonials</a>
+            </div>
           </div>
+          <div className="mt-6 text-xs text-zinc-500">© {new Date().getFullYear()} Veteran Mentors. All rights reserved.</div>
         </div>
       </Container>
     </footer>
