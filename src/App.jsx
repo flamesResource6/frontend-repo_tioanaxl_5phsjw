@@ -52,9 +52,16 @@ function Navbar() {
     >
       <Container>
         <div className="flex items-center justify-between py-4">
-          <a href="#" className="group relative flex items-center gap-3">
-            <img src="https://i.ibb.co/BKtw3VfF/AlgoU-2.png" alt="AlgoUniversity" className="h-7 w-auto object-contain" />
-            <span className="sr-only">AlgoUniversity</span>
+          <a
+            href="https://www.algouniversity.com/"
+            className="inline-flex items-center"
+            aria-label="AlgoUniversity Home"
+          >
+            <img
+              src="https://i.ibb.co/BKtw3VfF/AlgoU-2.png"
+              alt="AlgoUniversity"
+              className="block h-12 lg:h-14 w-auto m-0 p-0 object-contain drop-shadow-[0_0_12px_rgba(255,255,255,0.15)]"
+            />
           </a>
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((n) => (
