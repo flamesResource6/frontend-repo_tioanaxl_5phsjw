@@ -622,11 +622,12 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
+      {/* Order per request: 1) Hero 2) Stats 3) Offering Session 4) Master Session 5) Meet the mentor 6) Testimonials */}
       <Hero />
       <Stats />
+      <Offerings />
       <Agenda />
       <Mentors />
-      <Offerings />
       <Testimonials />
       <Footer />
     </div>
