@@ -207,14 +207,14 @@ function Stats() {
 
 function Agenda() {
   const session = {
-    topic: 'Beyond the Rank: The Mindset, Career Clarity, and Strategy Roadmap to Your High-Value Engineering Future',
+    topic: 'Beyond the Rank: Strategy Roadmap to Your High-Value Engineering Future',
     live: true,
     datetime: 'Thurs, 20 Nov · 8:00–9:30 PM IST',
     bullets: [
-      'CLD/CHD at IIIT-H: pattern, prep lens, realistic cutoffs',
-      'DASA/ASCA eligibility and timelines—what actually matters',
-      'Branch selection framework: CS vs AI/ML vs ECE (with examples)',
-      'Q&A: targeting 2025/26—practical next 30 days',
+      'Unconventional route for IIIT Hyderabad Admissions - CLD/CHD Exam',
+      'Selecting branch: Is CS & AI right for you?',
+      'Other premium colleges & ASCA scholarship eligibility.',
+      'Life at Google London & Apple at a age of 19',
     ],
     mentor: {
       name: 'Swapnil Daga',
@@ -328,18 +328,7 @@ function Agenda() {
                           <p className="text-base font-semibold text-white">{session.mentor.name}</p>
                           <p className="mt-1 text-sm text-zinc-300 leading-relaxed">{session.mentor.title}</p>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <BadgeCheck className="h-5 w-5 text-white/70" />
-                          <a
-                            href={session.mentor.linkedin}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium text-white bg-[#0A66C2] hover:bg-[#095aab] transition-colors"
-                          >
-                            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-white"><path d="M20.447 20.452H17.21v-5.569c0-1.328-.026-3.037-1.852-3.037-1.853 0-2.136 1.447-2.136 2.944v5.662H9.086V9h3.104v1.561h.045c.433-.82 1.492-1.686 3.069-1.686 3.285 0 3.89 2.163 3.89 4.977v6.6zM5.337 7.433a1.804 1.804 0 1 1 0-3.609 1.804 1.804 0 0 1 0 3.609zM6.875 20.452H3.8V9h3.075v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                            LinkedIn
-                          </a>
-                        </div>
+                        <BadgeCheck className="h-5 w-5 text-white/70" />
                       </div>
 
                       <div className="mt-4 flex flex-wrap gap-2">
@@ -348,6 +337,19 @@ function Agenda() {
                             {t}
                           </span>
                         ))}
+                      </div>
+
+                      {/* LinkedIn button moved below description & tags */}
+                      <div className="mt-5">
+                        <a
+                          href={session.mentor.linkedin}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white bg-[#0A66C2] hover:bg-[#095aab] transition-colors"
+                        >
+                          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-white"><path d="M20.447 20.452H17.21v-5.569c0-1.328-.026-3.037-1.852-3.037-1.853 0-2.136 1.447-2.136 2.944v5.662H9.086V9h3.104v1.561h.045c.433-.82 1.492-1.686 3.069-1.686 3.285 0 3.89 2.163 3.89 4.977v6.6zM5.337 7.433a1.804 1.804 0 1 1 0-3.609 1.804 1.804 0 0 1 0 3.609zM6.875 20.452H3.8V9h3.075v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                          Connect on LinkedIn
+                        </a>
                       </div>
                     </div>
 
