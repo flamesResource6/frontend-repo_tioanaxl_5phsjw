@@ -200,8 +200,24 @@ function Stats() {
               <>
                 <span className="relative inline-block pr-1">
                   <span className="relative z-10">Outcomes</span>
-                  <span className="pointer-events-none absolute left-0 right-0 -bottom-0.5 h-2 rounded-full bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-500 blur-[2px] opacity-90" />
-                  <span className="pointer-events-none absolute left-0 right-0 -bottom-0.5 h-[2px] bg-gradient-to-r from-yellow-300 to-orange-400" />
+                  <svg className="pointer-events-none absolute left-0 right-0 -bottom-1 h-3 w-full" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="scribbleGrad" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stopColor="#fde047" />
+                        <stop offset="60%" stopColor="#f59e0b" />
+                        <stop offset="100%" stopColor="#f97316" />
+                      </linearGradient>
+                      <filter id="scribbleGlow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="1.5" result="blur" />
+                        <feMerge>
+                          <feMergeNode in="blur" />
+                          <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                      </filter>
+                    </defs>
+                    <path d="M2,8 C25,2 40,10 60,6 C78,3 92,7 98,5" stroke="url(#scribbleGrad)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" filter="url(#scribbleGlow)" />
+                    <path d="M2,9 C25,3 40,11 60,7 C78,4 92,8 98,6" stroke="url(#scribbleGrad)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.75" />
+                  </svg>
                 </span>{' '}
                 that matter
               </>
