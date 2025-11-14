@@ -99,10 +99,13 @@ function Navbar() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-black">
-      <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/FduaNp3csZktbOi3/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+      {/* Background moved to the right so the yellow door is visible while text stays left */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="h-full w-full transform translate-x-[10%] md:translate-x-[14%] lg:translate-x-[18%]">
+          <Spline scene="https://prod.spline.design/FduaNp3csZktbOi3/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+        </div>
       </div>
-      {/* Re-aligned glow emphasis towards the left */}
+      {/* Keep subtle glow near the left to support the headline */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_600px_at_12%_40%,rgba(255,255,255,0.08),transparent_60%)]" />
       <Container>
         <div className="relative grid grid-cols-1 gap-16 py-24 md:py-28 lg:py-32">
