@@ -38,11 +38,12 @@ function Navbar() {
   const y = useScrollY()
   const solid = y > 40
   const navItems = [
-    { label: 'Agenda', href: '#agenda' },
-    { label: 'Mentors', href: '#mentors' },
     { label: 'Offerings', href: '#offerings' },
+    { label: 'Live Session', href: '#agenda' },
+    { label: 'Mentors', href: '#mentors' },
     { label: 'Testimonials', href: '#testimonials' },
   ]
+  const airtableUrl = 'https://airtable.com/appGPgtEBYio3Pufz/pagm1OHsUAJTxJJni/form?prefill_Source=website&hide_Source=true'
   return (
     <div
       className={`sticky top-0 z-40 transition-all ${
@@ -51,12 +52,9 @@ function Navbar() {
     >
       <Container>
         <div className="flex items-center justify-between py-4">
-          <a href="#" className="group relative flex items-center gap-2">
-            <div className="relative h-6 w-6 rounded-md overflow-hidden">
-              <span className="absolute inset-0 bg-gradient-to-tr from-zinc-200 via-white to-zinc-300" />
-              <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.6),transparent_40%)]" />
-            </div>
-            <span className="text-sm tracking-widest text-zinc-200">VETERAN MENTORS</span>
+          <a href="#" className="group relative flex items-center gap-3">
+            <img src="https://i.ibb.co/BKtw3VfF/AlgoU-2.png" alt="AlgoUniversity" className="h-7 w-auto object-contain" />
+            <span className="sr-only">AlgoUniversity</span>
           </a>
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((n) => (
@@ -64,8 +62,8 @@ function Navbar() {
                 {n.label}
               </a>
             ))}
-            <a href="#book" className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-zinc-100 transition-colors">
-              Book 1:1 <ChevronRight className="h-4 w-4" />
+            <a href={airtableUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-zinc-100 transition-colors">
+              Register Now <ChevronRight className="h-4 w-4" />
             </a>
           </div>
           <button className="md:hidden p-2 rounded-md hover:bg-white/5" onClick={() => setOpen(!open)}>
@@ -85,8 +83,8 @@ function Navbar() {
                   {n.label}
                 </a>
               ))}
-              <a href="#book" className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-zinc-100 transition-colors">
-                Book 1:1 <ChevronRight className="h-4 w-4" />
+              <a href={airtableUrl} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-zinc-100 transition-colors">
+                Register Now <ChevronRight className="h-4 w-4" />
               </a>
             </motion.div>
           )}
