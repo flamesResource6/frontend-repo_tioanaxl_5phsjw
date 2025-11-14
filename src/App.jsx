@@ -585,7 +585,12 @@ function Footer() {
     <footer className="relative bg-black border-t border-white/10">
       <Container>
         <div className="py-12">
-          <div className="text-xs text-zinc-500">© 2025 AlgoUniversity. All rights reserved.</div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-xs text-zinc-500">© 2025 AlgoUniversity. All rights reserved.</div>
+            <div className="text-sm text-zinc-300 md:text-right">
+              To know more contact — <a href="tel:+917032058474" className="text-white hover:opacity-80">+91-7032058474</a>
+            </div>
+          </div>
         </div>
       </Container>
     </footer>
