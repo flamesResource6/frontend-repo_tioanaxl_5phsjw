@@ -422,22 +422,40 @@ function Agenda() {
 function Mentors() {
   const mentors = [
     {
-      name: 'Swapnil',
-      title: 'IIIT Hyderabad (B.Tech) • Ex Apple • Ex Google London',
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop',
-      badges: ['CLD/CHD', 'BigTech', 'Product']
+      name: 'Manas Kumar Verma',
+      title: 'India’s top 15 competitive programmer • Youngest intern at Directi • Ex Quant Trader at Alphagrep Singapore',
+      avatar: 'https://i.ibb.co/d06Vp063/Copy-of-ASCSAI-Deck.png',
+      badges: ['IIIT-Hyderabad', 'Bronze Medal in IOI'],
+      description:
+        'India’s top 15 competitive programmer, youngest intern at Directi. Mentor who has taught and guided over 50,000 learners so far in their careers. Previously a Quant Trader at Alphagrep Singapore.',
+      logos: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLi4bV42Izq5HiSKnjgtwmw75T-0NR5qHDFA&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSN_zYUgpd1kHbtwdAQeR3tONMpWAq9_8YjQ&s',
+      ],
     },
     {
-      name: 'Manas',
-      title: 'Veteran Mentor • Tech + Product',
-      avatar: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=600&auto=format&fit=crop',
-      badges: ['Strategy', 'Roadmaps']
+      name: 'Swapnil Daga',
+      title: 'IIIT-Hyderabad • ECE Background',
+      avatar: 'https://i.ibb.co/CsTh9Pm0/Copy-of-ASCSAI-Deck-1.png',
+      badges: ['IIIT-Hyderabad', 'ECE'],
+      description:
+        'Guided over 50,000+ learners in their career so far. Right after college, Swapnil has cracked Google London & then moved on to Apple India. Currently leads teaching infra at AlgoUniversity.',
+      logos: [
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png',
+        'https://www.shutterstock.com/image-vector/galati-romania-april-29-2023-600nw-2295394661.jpg',
+      ],
     },
     {
-      name: 'Nikita',
-      title: 'IIIT Hyderabad CS • Ex Microsoft • Ex Indeed',
-      avatar: 'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=600&auto=format&fit=crop',
-      badges: ['CS/AI', 'Interview']
+      name: 'Nikita Agarwal',
+      title: 'IIIT-Hyderabad • Data Scientist',
+      avatar: 'https://i.ibb.co/S7yK2pM9/Copy-of-ASCSAI-Deck-2.png',
+      badges: ['IIIT-Hyderabad', 'Data Scientist'],
+      description:
+        'Previously at Microsoft as Data Scientist and Indeed as a senior software engineer. Nikita has logged almost 1000+ interviews for both students incoming to companies and companies’ roles.',
+      logos: [
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/2560px-Microsoft_logo_%282012%29.svg.png',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Indeed_logo.svg/2560px-Indeed_logo.svg.png',
+      ],
     },
   ]
   return (
@@ -459,24 +477,32 @@ function Mentors() {
                 transition={{ delay: i * 0.06 }}
                 className="group relative overflow-hidden rounded-2xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <GlassCard className="overflow-hidden">
-                  <div className="h-56 w-full overflow-hidden">
-                    <img src={m.avatar} alt={m.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between">
-                      <p className="text-white text-lg font-medium">{m.name}</p>
-                      <BadgeCheck className="h-5 w-5 text-white/70" />
+                <div className="absolute inset-0 bg-[radial-gradient(600px_240px_at_80%_-20%,rgba(251,146,60,0.14),transparent),radial-gradient(500px_200px_at_10%_120%,rgba(253,224,71,0.12),transparent)] opacity-70 pointer-events-none" />
+                <div className="rounded-2xl p-[1.5px] bg-gradient-to-br from-amber-400/30 via-orange-500/20 to-transparent">
+                  <div className="rounded-2xl overflow-hidden ring-2 ring-white/70 group-hover:ring-white transition">
+                    <div className="h-56 w-full overflow-hidden bg-[rgba(10,10,10,0.6)]">
+                      <img src={m.avatar} alt={m.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     </div>
-                    <p className="mt-1 text-sm text-zinc-400">{m.title}</p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {m.badges.map((b) => (
-                        <span key={b} className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[11px] text-zinc-300">{b}</span>
-                      ))}
+                    <div className="p-6 bg-white/[0.06]">
+                      <div className="flex items-center justify-between">
+                        <p className="text-white text-lg font-medium">{m.name}</p>
+                        <BadgeCheck className="h-5 w-5 text-white/70" />
+                      </div>
+                      <p className="mt-1 text-sm text-zinc-400">{m.title}</p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {m.badges.map((b) => (
+                          <span key={b} className="rounded-full border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 text-[11px] text-amber-100">{b}</span>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-zinc-300">{m.description}</p>
+                      <div className="mt-5 flex items-center gap-6 flex-wrap">
+                        {m.logos.map((logo, idx) => (
+                          <img key={idx} src={logo} alt="logo" className="h-6 w-auto object-contain drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)]" />
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </GlassCard>
+                </div>
               </motion.div>
             ))}
           </div>
