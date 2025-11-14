@@ -510,7 +510,11 @@ function Offerings() {
                 <div className="mt-6 flex items-center justify-between">
                   <div className="text-zinc-300">
                     <p className="text-sm">Single session</p>
-                    <p className="text-2xl text-white font-semibold">₹1200</p>
+                    <div className="mt-1 flex items-baseline gap-2">
+                      <span className="text-xl text-zinc-400 line-through">₹1200</span>
+                      <span className="text-2xl text-emerald-400 font-semibold">Free</span>
+                      <span className="text-xs text-zinc-400">(till 30th Nov)</span>
+                    </div>
                   </div>
                   <a
                     href="https://airtable.com/appGPgtEBYio3Pufz/pagk4Ph6TuKeTXPho/form?prefill_Source=website&hide_Source=true"
