@@ -588,7 +588,7 @@ function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-xs text-zinc-500">© 2025 AlgoUniversity. All rights reserved.</div>
             <div className="text-sm text-zinc-300 md:text-right">
-              To know more contact — <a href="tel:+917032058474" className="text-white hover:opacity-80">+91-7032058474</a>
+              To know more contact — <a href="tel:+917032058474" className="inline-flex items-center gap-2 text-white hover:opacity-80"><Phone className="h-4 w-4" aria-hidden="true" /> +91-7032058474</a>
             </div>
           </div>
         </div>
