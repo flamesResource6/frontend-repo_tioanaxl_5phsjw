@@ -265,11 +265,15 @@ function Agenda() {
       'Q&A: targeting 2025/26—practical next 30 days',
     ],
     mentor: {
-      name: 'Swapnil',
-      title: 'IIIT Hyderabad • Ex Apple • Ex Google London',
+      name: 'Swapnil Daga',
+      title: 'Guided over 50,000+ learners in their career so far. Right after college, Swapnil has cracked Google London & then moved on to Apple India. Currently leads teaching infra at AlgoUniversity.',
       avatar:
-        'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop',
-      tags: ['IIIT-H Alumni', 'BigTech Mentor', 'Product & CS', 'CLD/CHD']
+        'https://i.ibb.co/CsTh9Pm0/Copy-of-ASCSAI-Deck-1.png',
+      tags: ['IIIT-Hyd Alumni', 'ECE'],
+      logos: [
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png',
+        'https://www.shutterstock.com/image-vector/galati-romania-april-29-2023-600nw-2295394661.jpg',
+      ],
     },
   }
 
@@ -292,71 +296,69 @@ function Agenda() {
           </div>
 
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Left: Session details */}
+            {/* Left: Session details with a sharp, powerful border */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               className="relative"
             >
-              <div className="rounded-2xl p-[1.5px] bg-gradient-to-br from-slate-200 to-slate-100">
-                <div className="relative rounded-2xl overflow-hidden bg-white shadow-xl ring-1 ring-slate-200">
-                  {/* tinted blur sweep */}
-                  <div className="pointer-events-none absolute -left-24 top-0 h-full w-56 bg-gradient-to-b from-sky-400/20 to-emerald-300/0 blur-2xl" />
+              <div className="relative rounded-2xl overflow-hidden bg-white shadow-xl ring-2 ring-slate-900/15">
+                {/* tinted blur sweep */}
+                <div className="pointer-events-none absolute -left-24 top-0 h-full w-56 bg-gradient-to-b from-sky-400/20 to-emerald-300/0 blur-2xl" />
 
-                  <div className="p-6 md:p-8">
-                    <div className="flex items-center justify-between gap-4">
-                      <h3 className="text-xl md:text-2xl font-semibold leading-snug text-slate-900 max-w-[80%]">
-                        {session.topic}
-                      </h3>
-                      {session.live ? (
-                        <span className="inline-flex items-center gap-2 rounded-full bg-red-500/10 text-red-600 px-3 py-1 text-xs font-semibold ring-1 ring-red-500/30">
-                          <span className="relative flex h-2.5 w-2.5">
-                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500/80 opacity-75"></span>
-                            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500"></span>
-                          </span>
-                          LIVE
+                <div className="p-6 md:p-8">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="text-xl md:text-2xl font-semibold leading-snug text-slate-900 max-w-[80%]">
+                      {session.topic}
+                    </h3>
+                    {session.live ? (
+                      <span className="inline-flex items-center gap-2 rounded-full bg-red-500/10 text-red-600 px-3 py-1 text-xs font-semibold ring-1 ring-red-500/30">
+                        <span className="relative flex h-2.5 w-2.5">
+                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500/80 opacity-75"></span>
+                          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500"></span>
                         </span>
-                      ) : null}
-                    </div>
+                        LIVE
+                      </span>
+                    ) : null}
+                  </div>
 
-                    <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-slate-100 text-slate-700 px-3 py-1 text-xs ring-1 ring-slate-200">
-                      <Calendar className="h-3.5 w-3.5" /> {session.datetime}
-                    </div>
+                  <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-slate-100 text-slate-700 px-3 py-1 text-xs ring-1 ring-slate-200">
+                    <Calendar className="h-3.5 w-3.5" /> {session.datetime}
+                  </div>
 
-                    <div className="mt-6 grid gap-3">
-                      {session.bullets.map((b, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                          <div className="mt-0.5">
-                            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-900 text-white">
-                              {i + 1}
-                            </div>
+                  <div className="mt-6 grid gap-3">
+                    {session.bullets.map((b, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <div className="mt-0.5">
+                          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-900 text-white">
+                            {i + 1}
                           </div>
-                          <p className="text-slate-700">{b}</p>
                         </div>
-                      ))}
-                    </div>
+                        <p className="text-slate-700">{b}</p>
+                      </div>
+                    ))}
+                  </div>
 
-                    <div className="mt-7 flex flex-wrap items-center gap-3">
-                      <a
-                        href="#book"
-                        className="inline-flex items-center gap-2 rounded-full bg-slate-900 text-white px-4 py-2 text-sm font-medium hover:bg-black transition-colors"
-                      >
-                        Save your seat <ChevronRight className="h-4 w-4" />
-                      </a>
-                      <a
-                        href="#mentors"
-                        className="inline-flex items-center gap-2 rounded-full bg-white text-slate-900 px-4 py-2 text-sm font-medium ring-1 ring-slate-300 hover:bg-slate-50"
-                      >
-                        Meet the mentors
-                      </a>
-                    </div>
+                  <div className="mt-7 flex flex-wrap items-center gap-3">
+                    <a
+                      href="#book"
+                      className="inline-flex items-center gap-2 rounded-full bg-slate-900 text-white px-4 py-2 text-sm font-medium hover:bg-black transition-colors"
+                    >
+                      Save your seat <ChevronRight className="h-4 w-4" />
+                    </a>
+                    <a
+                      href="#mentors"
+                      className="inline-flex items-center gap-2 rounded-full bg-white text-slate-900 px-4 py-2 text-sm font-medium ring-1 ring-slate-300 hover:bg-slate-50"
+                    >
+                      Meet the mentors
+                    </a>
                   </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Right: Mentor highlight */}
+            {/* Right: Mentor highlight (no Book 1:1 or Group Session buttons here) */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -377,16 +379,17 @@ function Agenda() {
                         alt={session.mentor.name}
                         className="absolute inset-0 h-full w-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-slate-900/10 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-slate-900/10 to-transparent" />
                     </div>
                     <div className="p-6 md:p-8 flex flex-col">
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="text-base font-semibold text-slate-900">{session.mentor.name}</p>
-                          <p className="text-sm text-slate-600">{session.mentor.title}</p>
+                          <p className="mt-1 text-sm text-slate-600 leading-relaxed">{session.mentor.title}</p>
                         </div>
                         <BadgeCheck className="h-5 w-5 text-slate-500" />
                       </div>
+
                       <div className="mt-4 flex flex-wrap gap-2">
                         {session.mentor.tags.map((t) => (
                           <span key={t} className="rounded-full border border-slate-300 bg-white/70 backdrop-blur px-2.5 py-1 text-[11px] text-slate-700">
@@ -395,14 +398,15 @@ function Agenda() {
                         ))}
                       </div>
 
-                      <div className="mt-6 grid grid-cols-2 gap-3">
-                        <a href="#book" className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 text-white px-4 py-2.5 text-sm font-medium hover:bg-black transition-colors">
-                          Book 1:1
-                        </a>
-                        <a href="#offerings" className="inline-flex items-center justify-center gap-2 rounded-xl bg-white text-slate-900 px-4 py-2.5 text-sm font-medium ring-1 ring-slate-300 hover:bg-slate-50">
-                          Group session
-                        </a>
+                      <div className="mt-5 flex items-center gap-4">
+                        {session.mentor.logos.map((logo, idx) => (
+                          <div key={idx} className="h-6 w-auto">
+                            <img src={logo} alt="logo" className="h-6 w-auto object-contain grayscale opacity-80" />
+                          </div>
+                        ))}
                       </div>
+
+                      {/* Buttons intentionally omitted here as requested */}
                     </div>
                   </div>
                 </div>
