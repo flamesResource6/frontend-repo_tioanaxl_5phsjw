@@ -364,14 +364,7 @@ function Agenda() {
                     </a>
                   </div>
 
-                  {/* Tag highlight (IIIT-Hyd Alumni, ECE) */}
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {session.mentor.tags.map((t) => (
-                      <span key={t} className="rounded-full border border-amber-400/40 bg-amber-400/10 px-2.5 py-1 text-[11px] text-amber-100 shadow-[0_0_16px_rgba(251,191,36,0.15)]">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+                  {/* Note: removed left-side tag chips per request */}
                 </div>
 
                 {/* Right column: mentor highlight (top image, bottom content) */}
