@@ -207,9 +207,9 @@ function Stats() {
 
 function Agenda() {
   const session = {
-    topic: 'Choosing Your Best-Fit Path: CLD/CHD, DASA & Smart Branch Decisions',
+    topic: 'Beyond the Rank: The Mindset, Career Clarity, and Strategy Roadmap to Your High-Value Engineering Future',
     live: true,
-    datetime: 'Sat, 23 Nov · 6:00–7:15 PM IST',
+    datetime: 'Thurs, 20 Nov · 8:00–9:30 PM IST',
     bullets: [
       'CLD/CHD at IIIT-H: pattern, prep lens, realistic cutoffs',
       'DASA/ASCA eligibility and timelines—what actually matters',
@@ -239,10 +239,10 @@ function Agenda() {
       <Container>
         <div className="py-20">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-[11px] uppercase tracking-widest text-zinc-700">
-              <Sparkles className="h-3.5 w-3.5 text-zinc-700" /> Agenda
+            <div className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3 py-1 text-[11px] uppercase tracking-widest text-red-700">
+              <Sparkles className="h-3.5 w-3.5 text-red-600" /> LIVE
             </div>
-            <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-black">Master Session</h2>
+            <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-black">Upcoming Master Sessions</h2>
             <p className="mt-3 text-zinc-600 max-w-2xl">
               LIVE deep-dive happening soon. Clear outcomes, zero fluff.
             </p>
@@ -302,17 +302,7 @@ function Agenda() {
                       href="#book"
                       className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-zinc-100 transition-colors"
                     >
-                      Save your seat <ChevronRight className="h-4 w-4" />
-                    </a>
-                    {/* LinkedIn themed button */}
-                    <a
-                      href={session.mentor.linkedin}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white bg-[#0A66C2] hover:bg-[#095aab] transition-colors"
-                    >
-                      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-white"><path d="M20.447 20.452H17.21v-5.569c0-1.328-.026-3.037-1.852-3.037-1.853 0-2.136 1.447-2.136 2.944v5.662H9.086V9h3.104v1.561h.045c.433-.82 1.492-1.686 3.069-1.686 3.285 0 3.89 2.163 3.89 4.977v6.6zM5.337 7.433a1.804 1.804 0 1 1 0-3.609 1.804 1.804 0 0 1 0 3.609zM6.875 20.452H3.8V9h3.075v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                      Connect on LinkedIn
+                      Register Now <ChevronRight className="h-4 w-4" />
                     </a>
                   </div>
 
@@ -338,7 +328,18 @@ function Agenda() {
                           <p className="text-base font-semibold text-white">{session.mentor.name}</p>
                           <p className="mt-1 text-sm text-zinc-300 leading-relaxed">{session.mentor.title}</p>
                         </div>
-                        <BadgeCheck className="h-5 w-5 text-white/70" />
+                        <div className="flex items-center gap-2">
+                          <BadgeCheck className="h-5 w-5 text-white/70" />
+                          <a
+                            href={session.mentor.linkedin}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium text-white bg-[#0A66C2] hover:bg-[#095aab] transition-colors"
+                          >
+                            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-white"><path d="M20.447 20.452H17.21v-5.569c0-1.328-.026-3.037-1.852-3.037-1.853 0-2.136 1.447-2.136 2.944v5.662H9.086V9h3.104v1.561h.045c.433-.82 1.492-1.686 3.069-1.686 3.285 0 3.89 2.163 3.89 4.977v6.6zM5.337 7.433a1.804 1.804 0 1 1 0-3.609 1.804 1.804 0 0 1 0 3.609zM6.875 20.452H3.8V9h3.075v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            LinkedIn
+                          </a>
+                        </div>
                       </div>
 
                       <div className="mt-4 flex flex-wrap gap-2">
@@ -348,14 +349,13 @@ function Agenda() {
                           </span>
                         ))}
                       </div>
+                    </div>
 
-                      <div className="mt-5 flex items-center gap-6">
-                        {session.mentor.logos.map((logo, idx) => (
-                          <div key={idx} className="h-6 w-auto">
-                            <img src={logo} alt="logo" className="h-6 w-auto object-contain drop-shadow-[0_1px_6px_rgba(0,0,0,0.28)]" />
-                          </div>
-                        ))}
-                      </div>
+                    {/* White logo strip for better visibility */}
+                    <div className="bg-white h-14 px-6 flex items-center gap-6">
+                      {session.mentor.logos.map((logo, idx) => (
+                        <img key={idx} src={logo} alt="logo" className="h-6 w-auto object-contain" />
+                      ))}
                     </div>
                   </div>
                 </div>
