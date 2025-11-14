@@ -376,15 +376,15 @@ function Agenda() {
 function Mentors() {
   const mentors = [
     {
-      name: 'Manas Kumar Verma',
-      title: 'India’s top 15 competitive programmer • Youngest intern at Directi • Ex Quant Trader at Alphagrep Singapore',
-      avatar: 'https://i.ibb.co/d06Vp063/Copy-of-ASCSAI-Deck.png',
-      badges: ['IIIT-Hyderabad', 'Bronze Medal in IOI'],
+      name: 'Apaar Agrawal',
+      title: 'IIIT-Hyderabad • International Paper',
+      avatar: 'https://i.ibb.co/Q3CxgF0X/Apaar-ASCSAI-Deck.png',
+      badges: ['IIIT-Hyderabad', 'International Paper'],
       description:
-        'India’s top 15 competitive programmer, youngest intern at Directi. Mentor who has taught and guided over 50,000 learners so far in their careers. Previously a Quant Trader at Alphagrep Singapore.',
+        'Previously at Slice as Data Engineer and is a graduate from IIIT-H. He leads the Admissions and Student Success operations, ensuring a smooth and transparent process for every learner.',
       logos: [
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLi4bV42Izq5HiSKnjgtwmw75T-0NR5qHDFA&s',
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSN_zYUgpd1kHbtwdAQeR3tONMpWAq9_8YjQ&s',
+        'https://www.insightpartners.com/wp-content/uploads/2023/01/slice-logo-KO.png',
+        'https://www.iiit.ac.in/wp-content/uploads/2022/06/IIIT_Hyderabad_Logo-e1655116937986.jpg',
       ],
     },
     {
