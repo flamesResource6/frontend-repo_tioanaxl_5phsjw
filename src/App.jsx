@@ -184,37 +184,41 @@ const GlassCard = ({ children, className = '' }) => (
 
 function Stats() {
   const stats = [
-    { label: 'Students Guided', value: '2,300+', icon: Users },
-    { label: 'Schools & Coachings', value: '40+', icon: GraduationCap },
-    { label: 'Avg. Session Rating', value: '4.9/5', icon: Star },
-    { label: 'Cities Reached', value: '18', icon: MapPin },
+    { label: 'Students Guided', value: '2,300+', icon: Users, hue: 'from-emerald-400/20 to-emerald-300/0' },
+    { label: 'Schools & Coachings', value: '40+', icon: GraduationCap, hue: 'from-sky-400/20 to-sky-300/0' },
+    { label: 'Avg. Session Rating', value: '4.9/5', icon: Star, hue: 'from-amber-400/20 to-amber-300/0' },
+    { label: 'Cities Reached', value: '18', icon: MapPin, hue: 'from-fuchsia-400/20 to-fuchsia-300/0' },
   ]
   return (
-    <section className="relative bg-black border-t border-white/10">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(255,255,255,0.06),transparent_60%)]" />
+    <section className="relative border-t border-white/10 bg-[radial-gradient(1200px_600px_at_20%_-20%,rgba(99,102,241,0.18),transparent),radial-gradient(1000px_500px_at_90%_20%,rgba(16,185,129,0.14),transparent)]">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.06),transparent_30%),radial-gradient(ellipse_at_bottom,rgba(255,255,255,0.06),transparent_60%)]" />
       <Container>
-        <div className="py-16">
+        <div className="py-18 md:py-20">
           <SectionHeader
             eyebrow="Snapshot"
             title="Outcomes that matter"
             subtitle="Focused guidance with real reach and consistently high feedback."
           />
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((s) => (
+            {stats.map((s, idx) => (
               <motion.div
                 key={s.label}
-                whileHover={{ y: -4 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                whileHover={{ y: -6, scale: 1.01 }}
+                transition={{ type: 'spring', stiffness: 260, damping: 20 }}
                 className="relative"
               >
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-white/20/10 to-transparent opacity-40" />
-                <GlassCard className="relative p-6 text-center">
-                  <div className="mx-auto mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-white/10">
-                    {React.createElement(s.icon, { className: 'h-4 w-4 text-white/80' })}
+                <div className={`rounded-2xl p-[1px] bg-gradient-to-br ${s.hue}`}>
+                  <div className="relative rounded-2xl h-full w-full overflow-hidden">
+                    <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.12),transparent_40%)] opacity-60" />
+                    <GlassCard className="relative p-6 text-center bg-[rgba(12,12,12,0.55)]">
+                      <div className="mx-auto mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 ring-1 ring-white/10">
+                        {React.createElement(s.icon, { className: 'h-4.5 w-4.5 text-white/80' })}
+                      </div>
+                      <p className="text-2xl md:text-3xl font-semibold text-white tracking-tight">{s.value}</p>
+                      <p className="mt-1 text-sm text-zinc-400">{s.label}</p>
+                    </GlassCard>
                   </div>
-                  <p className="text-2xl md:text-3xl font-semibold text-white">{s.value}</p>
-                  <p className="mt-1 text-sm text-zinc-400">{s.label}</p>
-                </GlassCard>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -229,22 +233,26 @@ function Agenda() {
     {
       title: "Less-known routes: IIIT Hyderabad's CLD / CHD exam",
       desc: 'Understand patterns, prep strategies, and how they differ from JEE mains/adv.',
+      tint: 'from-sky-400/25',
     },
     {
       title: 'DASA quota rules & ASCA scholarships',
       desc: 'For NRI/PIO—clarity on eligibility, timelines, and realistic options.',
+      tint: 'from-emerald-400/25',
     },
     {
       title: 'Selecting branch: Is CS & AI right for you?',
       desc: 'Frameworks to decide between CS, AI/ML, ECE, and interdisciplinary choices.',
+      tint: 'from-amber-400/25',
     },
     {
       title: 'Life at Google London & Apple at 19',
       desc: 'Candid stories: work culture, impact, compensation, and expectations.',
+      tint: 'from-fuchsia-400/25',
     },
   ]
   return (
-    <section id="agenda" className="relative bg-black">
+    <section id="agenda" className="relative bg-[radial-gradient(1000px_500px_at_0%_0%,rgba(59,130,246,0.08),transparent),linear-gradient(to_bottom,#050505,#0b0b0b)]">
       <Container>
         <div className="py-20">
           <SectionHeader
@@ -260,9 +268,10 @@ function Agenda() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ delay: i * 0.05 }}
-                className="group rounded-2xl p-[1px] bg-gradient-to-b from-white/15 to-white/5"
+                className={`group rounded-2xl p-[1px] bg-gradient-to-b from-white/10 to-white/5`}
               >
-                <div className="h-full rounded-2xl bg-black p-6 ring-1 ring-white/10">
+                <div className="h-full rounded-2xl bg-black/70 p-6 ring-1 ring-white/10 relative overflow-hidden">
+                  <div className={`pointer-events-none absolute -left-24 top-0 h-full w-48 bg-gradient-to-b opacity-20 blur-2xl ${t.tint} to-transparent`} />
                   <div className="flex items-start justify-between gap-6">
                     <h3 className="text-white text-lg font-medium leading-snug max-w-[80%]">{t.title}</h3>
                     <ChevronRight className="h-5 w-5 text-white/50 group-hover:text-white transition-colors" />
