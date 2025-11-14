@@ -232,7 +232,7 @@ function Agenda() {
         'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png',
         'https://www.shutterstock.com/image-vector/galati-romania-april-29-2023-600nw-2295394661.jpg',
       ],
-      linkedin: 'https://www.linkedin.com/'
+      linkedin: 'https://www.linkedin.com/in/swapnil-daga1/'
     },
   }
 
@@ -304,7 +304,9 @@ function Agenda() {
 
                   <div className="mt-7 flex flex-wrap items-center gap-3">
                     <a
-                      href="#book"
+                      href="https://airtable.com/appGPgtEBYio3Pufz/pagm1OHsUAJTxJJni/form?prefill_Source=website&hide_Source=true"
+                      target="_blank"
+                      rel="noreferrer"
                       className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-zinc-100 transition-colors"
                     >
                       Register Now <ChevronRight className="h-4 w-4" />
@@ -513,12 +515,12 @@ function Offerings() {
                     <p className="text-2xl text-white font-semibold">₹1200</p>
                   </div>
                   <a
-                    href="https://calendly.com/"
+                    href="https://airtable.com/appGPgtEBYio3Pufz/pagk4Ph6TuKeTXPho/form?prefill_Source=website&hide_Source=true"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 rounded-full bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-zinc-100 transition-colors"
                   >
-                    <Calendar className="h-4 w-4" /> Book via Calendly <ExternalLink className="h-4 w-4" />
+                    <Calendar className="h-4 w-4" /> Book Now
                   </a>
                 </div>
               </GlassCard>
