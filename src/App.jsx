@@ -282,31 +282,31 @@ function Agenda() {
   return (
     <section
       id="agenda"
-      className="relative border-t border-white/10 bg-[radial-gradient(1400px_600px_at_10%_-10%,rgba(59,130,246,0.12),transparent),linear-gradient(to_bottom,#0a0a0a,#0b0b0b)] text-white"
+      className="relative border-t border-zinc-200 bg-white text-black"
     >
       <Container>
         <div className="py-20">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-widest text-zinc-300 backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5" /> Agenda
+            <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-[11px] uppercase tracking-widest text-zinc-700">
+              <Sparkles className="h-3.5 w-3.5 text-zinc-700" /> Agenda
             </div>
-            <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-white">Master Session</h2>
-            <p className="mt-3 text-zinc-400 max-w-2xl">
+            <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-black">Master Session</h2>
+            <p className="mt-3 text-zinc-600 max-w-2xl">
               LIVE deep-dive happening soon. Clear outcomes, zero fluff.
             </p>
           </div>
 
-          {/* Unified single dark glass card with yellow glow */}
+          {/* Unified single dark glass card with GREY glow and deeper dark tone */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             className="mt-10 relative"
           >
-            <div className="relative overflow-hidden rounded-2xl bg-[rgba(10,10,10,0.75)] backdrop-blur-xl ring-2 ring-amber-400/30 shadow-[0_0_0_1px_rgba(251,191,36,0.15),0_0_40px_rgba(251,191,36,0.18)]">
-              {/* fiery radial glows */}
-              <div className="pointer-events-none absolute -left-24 top-0 h-full w-56 bg-[radial-gradient(500px_200px_at_40%_10%,rgba(251,191,36,0.20),transparent)]" />
-              <div className="pointer-events-none absolute -right-24 bottom-0 h-48 w-80 bg-[radial-gradient(600px_240px_at_70%_90%,rgba(245,158,11,0.18),transparent)]" />
+            <div className="relative overflow-hidden rounded-2xl bg-[rgba(6,6,6,0.88)] backdrop-blur-xl ring-2 ring-zinc-300/30 shadow-[0_0_0_1px_rgba(212,212,216,0.18),0_0_40px_rgba(148,163,184,0.25)]">
+              {/* subtle neutral radial glows */}
+              <div className="pointer-events-none absolute -left-24 top-0 h-full w-56 bg-[radial-gradient(500px_200px_at_40%_10%,rgba(148,163,184,0.18),transparent)]" />
+              <div className="pointer-events-none absolute -right-24 bottom-0 h-48 w-80 bg-[radial-gradient(600px_240px_at_70%_90%,rgba(113,113,122,0.18),transparent)]" />
 
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 {/* Left column: agenda details */}
@@ -412,10 +412,9 @@ function Agenda() {
           </motion.div>
         </div>
       </Container>
-
-      {/* subtle top/bottom separators so the light block blends into dark theme */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-black/40 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/30 to-transparent" />
+      {/* Smooth transition back to dark theme */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-black/30 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/40 to-transparent" />
     </section>
   )
 }
@@ -499,7 +498,7 @@ function Offerings() {
           />
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
             <motion.div whileHover={{ y: -4 }} className="relative">
-              <GlassCard className="p-8 flex flex-col justify-between h-full">
+              <GlassCard className="p-8 flex flex-col justify-between h-full ring-2 ring-white/70 hover:ring-white transition">
                 <div>
                   <p className="text-white text-xl font-medium">Group Sessions</p>
                   <p className="mt-2 text-zinc-400">
@@ -513,8 +512,8 @@ function Offerings() {
             </motion.div>
 
             <motion.div whileHover={{ y: -4 }} id="book" className="relative">
-              <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-white/20 to-transparent opacity-40" />
-              <GlassCard className="relative p-8">
+              <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-white/30 to-transparent opacity-40 pointer-events-none" />
+              <GlassCard className="relative p-8 ring-2 ring-white/70 hover:ring-white transition">
                 <p className="text-white text-xl font-medium">1:1 Parent–Student Career Counseling</p>
                 <ul className="mt-4 space-y-2 text-sm text-zinc-300">
                   <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 mt-0.5 text-emerald-400" /> 45 minutes deep-dive tailored to your context</li>
