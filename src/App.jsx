@@ -102,10 +102,11 @@ function Hero() {
       <div className="absolute inset-0">
         <Spline scene="https://prod.spline.design/FduaNp3csZktbOi3/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.08),transparent_60%)]" />
+      {/* Re-aligned glow emphasis towards the left */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_600px_at_12%_40%,rgba(255,255,255,0.08),transparent_60%)]" />
       <Container>
-        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-16 py-24 md:py-28 lg:py-32">
-          <div className="flex flex-col justify-center">
+        <div className="relative grid grid-cols-1 gap-16 py-24 md:py-28 lg:py-32">
+          <div className="flex flex-col justify-center max-w-2xl">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -133,28 +134,6 @@ function Hero() {
               <div className="flex items-center gap-2">
                 <Star className="h-4 w-4" />
                 <span>Apple-level polish</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative w-full h-[280px] sm:h-[360px] md:h-[420px] lg:h-[520px] rounded-2xl overflow-hidden ring-1 ring-white/10 bg-white/5">
-            <video
-              className="absolute inset-0 h-full w-full object-cover"
-              src="https://cdn.coverr.co/videos/coverr-students-studying-together-1396/1080p.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-              <div className="text-white">
-                <p className="text-sm uppercase tracking-widest text-white/70">On the right</p>
-                <p className="text-base font-medium">A quick intro from mentors</p>
-              </div>
-              <div className="flex items-center gap-2 text-white/80">
-                <Play className="h-5 w-5" />
-                <span className="text-sm">Autoplay • Muted</span>
               </div>
             </div>
           </div>
