@@ -81,7 +81,7 @@ function Navbar() {
               className="md:hidden grid gap-2 pb-4"
             >
               {navItems.map((n) => (
-                <a key={n.href} href={n.href} className="text-zinc-300 hover:text-white transition-colors text-sm py-2 border-top border-white/10">
+                <a key={n.href} href={n.href} className="text-zinc-300 hover:text-white transition-colors text-sm py-2 border-t border-white/10">
                   {n.label}
                 </a>
               ))}
@@ -275,47 +275,48 @@ function Agenda() {
         'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png',
         'https://www.shutterstock.com/image-vector/galati-romania-april-29-2023-600nw-2295394661.jpg',
       ],
+      linkedin: 'https://www.linkedin.com/'
     },
   }
 
   return (
     <section
       id="agenda"
-      className="relative border-t border-white/10 bg-[radial-gradient(1400px_600px_at_10%_-10%,rgba(59,130,246,0.12),transparent),linear-gradient(to_bottom,#f6f7fb,#eef0f5)] text-slate-900"
+      className="relative border-t border-white/10 bg-[radial-gradient(1400px_600px_at_10%_-10%,rgba(59,130,246,0.12),transparent),linear-gradient(to_bottom,#0a0a0a,#0b0b0b)] text-white"
     >
       <Container>
         <div className="py-20">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-slate-300/60 bg-white/80 px-3 py-1 text-[11px] uppercase tracking-widest text-slate-700 backdrop-blur">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-widest text-zinc-300 backdrop-blur">
               <Sparkles className="h-3.5 w-3.5" /> Agenda
             </div>
-            <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-slate-900">Master Session</h2>
-            <p className="mt-3 text-slate-600 max-w-2xl">
+            <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-white">Master Session</h2>
+            <p className="mt-3 text-zinc-400 max-w-2xl">
               LIVE deep-dive happening soon. Clear outcomes, zero fluff.
             </p>
           </div>
 
-          {/* Unified single card with left-right layout; mentor panel uses top-bottom inside */}
+          {/* Unified single dark glass card with yellow glow */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             className="mt-10 relative"
           >
-            <div className="relative overflow-hidden rounded-2xl bg-white shadow-xl ring-2 ring-slate-900/15">
-              {/* subtle color sweeps */}
-              <div className="pointer-events-none absolute -left-24 top-0 h-full w-56 bg-gradient-to-b from-sky-400/20 to-emerald-300/0 blur-2xl" />
-              <div className="pointer-events-none absolute -right-24 bottom-0 h-40 w-72 bg-gradient-to-tr from-amber-300/20 to-fuchsia-300/0 blur-2xl" />
+            <div className="relative overflow-hidden rounded-2xl bg-[rgba(10,10,10,0.75)] backdrop-blur-xl ring-2 ring-amber-400/30 shadow-[0_0_0_1px_rgba(251,191,36,0.15),0_0_40px_rgba(251,191,36,0.18)]">
+              {/* fiery radial glows */}
+              <div className="pointer-events-none absolute -left-24 top-0 h-full w-56 bg-[radial-gradient(500px_200px_at_40%_10%,rgba(251,191,36,0.20),transparent)]" />
+              <div className="pointer-events-none absolute -right-24 bottom-0 h-48 w-80 bg-[radial-gradient(600px_240px_at_70%_90%,rgba(245,158,11,0.18),transparent)]" />
 
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 {/* Left column: agenda details */}
                 <div className="p-6 md:p-8">
                   <div className="flex items-center justify-between gap-4">
-                    <h3 className="text-xl md:text-2xl font-semibold leading-snug text-slate-900 max-w-[80%]">
+                    <h3 className="text-xl md:text-2xl font-semibold leading-snug text-white max-w-[80%]">
                       {session.topic}
                     </h3>
                     {session.live ? (
-                      <span className="inline-flex items-center gap-2 rounded-full bg-red-500/10 text-red-600 px-3 py-1 text-xs font-semibold ring-1 ring-red-500/30">
+                      <span className="inline-flex items-center gap-2 rounded-full bg-red-500/15 text-red-300 px-3 py-1 text-xs font-semibold ring-1 ring-red-500/30">
                         <span className="relative flex h-2.5 w-2.5">
                           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500/80 opacity-75"></span>
                           <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500"></span>
@@ -325,19 +326,21 @@ function Agenda() {
                     ) : null}
                   </div>
 
-                  <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-slate-100 text-slate-700 px-3 py-1 text-xs ring-1 ring-slate-200">
-                    <Calendar className="h-3.5 w-3.5" /> {session.datetime}
+                  {/* Highlighted date & time */}
+                  <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-amber-400/10 text-amber-200 px-3 py-1.5 text-sm ring-1 ring-amber-300/30 shadow-[0_0_24px_rgba(251,191,36,0.15)]">
+                    <Calendar className="h-4 w-4 text-amber-300" />
+                    <span className="font-medium tracking-wide">{session.datetime}</span>
                   </div>
 
                   <div className="mt-6 grid gap-3">
                     {session.bullets.map((b, i) => (
                       <div key={i} className="flex items-start gap-3">
                         <div className="mt-0.5">
-                          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-900 text-white">
+                          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-amber-400/20 text-amber-100 ring-1 ring-amber-300/30">
                             {i + 1}
                           </div>
                         </div>
-                        <p className="text-slate-700">{b}</p>
+                        <p className="text-zinc-300">{b}</p>
                       </div>
                     ))}
                   </div>
@@ -345,21 +348,34 @@ function Agenda() {
                   <div className="mt-7 flex flex-wrap items-center gap-3">
                     <a
                       href="#book"
-                      className="inline-flex items-center gap-2 rounded-full bg-slate-900 text-white px-4 py-2 text-sm font-medium hover:bg-black transition-colors"
+                      className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-zinc-100 transition-colors"
                     >
                       Save your seat <ChevronRight className="h-4 w-4" />
                     </a>
+                    {/* LinkedIn themed button */}
                     <a
-                      href="#mentors"
-                      className="inline-flex items-center gap-2 rounded-full bg-white text-slate-900 px-4 py-2 text-sm font-medium ring-1 ring-slate-300 hover:bg-slate-50"
+                      href={session.mentor.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white bg-[#0A66C2] hover:bg-[#095aab] transition-colors"
                     >
-                      Meet the mentors
+                      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-white"><path d="M20.447 20.452H17.21v-5.569c0-1.328-.026-3.037-1.852-3.037-1.853 0-2.136 1.447-2.136 2.944v5.662H9.086V9h3.104v1.561h.045c.433-.82 1.492-1.686 3.069-1.686 3.285 0 3.89 2.163 3.89 4.977v6.6zM5.337 7.433a1.804 1.804 0 1 1 0-3.609 1.804 1.804 0 0 1 0 3.609zM6.875 20.452H3.8V9h3.075v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      Connect on LinkedIn
                     </a>
+                  </div>
+
+                  {/* Tag highlight (IIIT-Hyd Alumni, ECE) */}
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {session.mentor.tags.map((t) => (
+                      <span key={t} className="rounded-full border border-amber-400/40 bg-amber-400/10 px-2.5 py-1 text-[11px] text-amber-100 shadow-[0_0_16px_rgba(251,191,36,0.15)]">
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
                 {/* Right column: mentor highlight (top image, bottom content) */}
-                <div className="border-t lg:border-t-0 lg:border-l border-slate-200/70 bg-white/60 backdrop-blur-sm">
+                <div className="border-t lg:border-t-0 lg:border-l border-white/10 bg-white/5 backdrop-blur-sm">
                   <div className="flex flex-col">
                     {/* Top: image */}
                     <div className="relative h-56 sm:h-64 md:h-72 lg:h-64">
@@ -368,21 +384,21 @@ function Agenda() {
                         alt={session.mentor.name}
                         className="absolute inset-0 h-full w-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-slate-900/10 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
                     </div>
                     {/* Bottom: text, tags, logos */}
                     <div className="p-6 md:p-8">
                       <div className="flex items-start justify-between gap-4">
                         <div>
-                          <p className="text-base font-semibold text-slate-900">{session.mentor.name}</p>
-                          <p className="mt-1 text-sm text-slate-700 leading-relaxed">{session.mentor.title}</p>
+                          <p className="text-base font-semibold text-white">{session.mentor.name}</p>
+                          <p className="mt-1 text-sm text-zinc-300 leading-relaxed">{session.mentor.title}</p>
                         </div>
-                        <BadgeCheck className="h-5 w-5 text-slate-500" />
+                        <BadgeCheck className="h-5 w-5 text-white/70" />
                       </div>
 
                       <div className="mt-4 flex flex-wrap gap-2">
                         {session.mentor.tags.map((t) => (
-                          <span key={t} className="rounded-full border border-slate-300 bg-white/80 backdrop-blur px-2.5 py-1 text-[11px] text-slate-700">
+                          <span key={t} className="rounded-full border border-amber-400/40 bg-amber-400/10 px-2.5 py-1 text-[11px] text-amber-100">
                             {t}
                           </span>
                         ))}
@@ -391,8 +407,7 @@ function Agenda() {
                       <div className="mt-5 flex items-center gap-6">
                         {session.mentor.logos.map((logo, idx) => (
                           <div key={idx} className="h-6 w-auto">
-                            {/* Keep original brand colors; add gentle drop shadow for contrast */}
-                            <img src={logo} alt="logo" className="h-6 w-auto object-contain drop-shadow-[0_1px_6px_rgba(0,0,0,0.12)]" />
+                            <img src={logo} alt="logo" className="h-6 w-auto object-contain drop-shadow-[0_1px_6px_rgba(0,0,0,0.28)]" />
                           </div>
                         ))}
                       </div>
