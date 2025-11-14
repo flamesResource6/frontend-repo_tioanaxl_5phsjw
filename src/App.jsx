@@ -475,15 +475,15 @@ function Mentors() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06 }}
-                className="group relative overflow-hidden rounded-2xl"
+                className="group relative overflow-hidden rounded-2xl h-full"
               >
                 <div className="absolute inset-0 bg-[radial-gradient(600px_240px_at_80%_-20%,rgba(251,146,60,0.14),transparent),radial-gradient(500px_200px_at_10%_120%,rgba(253,224,71,0.12),transparent)] opacity-70 pointer-events-none" />
-                <div className="rounded-2xl p-[1.5px] bg-gradient-to-br from-amber-400/30 via-orange-500/20 to-transparent">
-                  <div className="rounded-2xl overflow-hidden ring-2 ring-white/70 group-hover:ring-white transition">
+                <div className="rounded-2xl p-[1.5px] bg-gradient-to-br from-amber-400/30 via-orange-500/20 to-transparent h-full">
+                  <div className="rounded-2xl overflow-hidden ring-2 ring-white/70 group-hover:ring-white transition h-full flex flex-col">
                     <div className="h-56 w-full overflow-hidden bg-[rgba(10,10,10,0.6)]">
                       <img src={m.avatar} alt={m.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     </div>
-                    <div className="p-6 bg-white/[0.06]">
+                    <div className="p-6 bg-white/[0.06] flex-1 flex flex-col">
                       <div className="flex items-center justify-between">
                         <p className="text-white text-lg font-medium">{m.name}</p>
                         <BadgeCheck className="h-5 w-5 text-white/70" />
@@ -495,11 +495,12 @@ function Mentors() {
                         ))}
                       </div>
                       <p className="mt-3 text-sm leading-relaxed text-zinc-300">{m.description}</p>
-                      <div className="mt-5 flex items-center gap-6 flex-wrap">
-                        {m.logos.map((logo, idx) => (
-                          <img key={idx} src={logo} alt="logo" className="h-6 w-auto object-contain drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)]" />
-                        ))}
-                      </div>
+                    </div>
+                    {/* White logo strip for consistency */}
+                    <div className="bg-white h-14 px-6 flex items-center gap-6 overflow-x-auto">
+                      {m.logos.map((logo, idx) => (
+                        <img key={idx} src={logo} alt="logo" className="h-6 w-auto object-contain" />
+                      ))}
                     </div>
                   </div>
                 </div>
