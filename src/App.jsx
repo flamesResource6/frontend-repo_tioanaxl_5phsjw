@@ -127,8 +127,8 @@ function Hero() {
               Veteran mentors from IIIT Hyderabad, Apple, Google, Microsoft and more. Make confident career choices with premium, no-noise advice.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <a href="#book" className="inline-flex items-center justify-center rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-zinc-100 transition-colors">
-                Book 1:1 Counseling
+              <a href="https://airtable.com/appGPgtEBYio3Pufz/pagk4Ph6TuKeTXPho/form?prefill_Source=website&hide_Source=true" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-zinc-100 transition-colors">
+                Book 1:1 Session
               </a>
               {/* Yellow gradient crisp border button */}
               <span className="inline-flex rounded-full p-[1.5px] bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-400">
