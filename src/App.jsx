@@ -160,10 +160,10 @@ const GlassCard = ({ children, className = '' }) => (
 
 function Stats() {
   const stats = [
-    { label: 'Students Guided', value: '2,300+', icon: Users, hue: 'from-emerald-400/20 to-emerald-300/0', ring: 'ring-emerald-400/40', glow: 'shadow-[0_0_36px_rgba(16,185,129,0.25)]' },
-    { label: 'Schools & Coachings', value: '40+', icon: GraduationCap, hue: 'from-sky-400/20 to-sky-300/0', ring: 'ring-sky-400/40', glow: 'shadow-[0_0_36px_rgba(56,189,248,0.22)]' },
-    { label: 'Avg. Session Rating', value: '4.9/5', icon: Star, hue: 'from-amber-400/20 to-amber-300/0', ring: 'ring-amber-400/40', glow: 'shadow-[0_0_36px_rgba(251,191,36,0.25)]' },
-    { label: 'Cities Reached', value: '18', icon: MapPin, hue: 'from-fuchsia-400/20 to-fuchsia-300/0', ring: 'ring-fuchsia-400/40', glow: 'shadow-[0_0_36px_rgba(232,121,249,0.25)]' },
+    { value: '50k+', label: 'Learners Guided Online', subtitle: 'Across PAN India', icon: Users, hue: 'from-emerald-400/20 to-emerald-300/0', ring: 'ring-emerald-400/40', glow: 'shadow-[0_0_36px_rgba(16,185,129,0.25)]' },
+    { value: '210+', label: 'Training Workshop', subtitle: 'Campus + Online', icon: GraduationCap, hue: 'from-sky-400/20 to-sky-300/0', ring: 'ring-sky-400/40', glow: 'shadow-[0_0_36px_rgba(56,189,248,0.22)]' },
+    { value: '4.87/5', label: 'Avg. session rating', icon: Star, hue: 'from-amber-400/20 to-amber-300/0', ring: 'ring-amber-400/40', glow: 'shadow-[0_0_36px_rgba(251,191,36,0.25)]' },
+    { value: '2500+', label: '1:1 Telephonic Sessions', icon: Phone, hue: 'from-fuchsia-400/20 to-fuchsia-300/0', ring: 'ring-fuchsia-400/40', glow: 'shadow-[0_0_36px_rgba(232,121,249,0.25)]' },
   ]
   return (
     <section className="relative border-t border-white/10 bg-[radial-gradient(1100px_520px_at_15%_-10%,rgba(255,213,0,0.12),transparent),radial-gradient(900px_480px_at_90%_0%,rgba(255,115,0,0.10),transparent),linear-gradient(to_bottom,#060606,#0b0b0b)]">
@@ -172,33 +172,8 @@ function Stats() {
         <div className="py-18 md:py-20">
           <SectionHeader
             eyebrow="Snapshot"
-            title={
-              <>
-                <span className="relative inline-block pr-1">
-                  <span className="relative z-10">Outcomes</span>
-                  <svg className="pointer-events-none absolute left-0 right-0 -bottom-1 h-3 w-full" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true">
-                    <defs>
-                      <linearGradient id="scribbleGrad" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stopColor="#fde047" />
-                        <stop offset="60%" stopColor="#f59e0b" />
-                        <stop offset="100%" stopColor="#f97316" />
-                      </linearGradient>
-                      <filter id="scribbleGlow" x="-20%" y="-20%" width="140%" height="140%">
-                        <feGaussianBlur stdDeviation="1.5" result="blur" />
-                        <feMerge>
-                          <feMergeNode in="blur" />
-                          <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                      </filter>
-                    </defs>
-                    <path d="M2,8 C25,2 40,10 60,6 C78,3 92,7 98,5" stroke="url(#scribbleGrad)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" filter="url(#scribbleGlow)" />
-                    <path d="M2,9 C25,3 40,11 60,7 C78,4 92,8 98,6" stroke="url(#scribbleGrad)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.75" />
-                  </svg>
-                </span>{' '}
-                that matter
-              </>
-            }
-            subtitle="Focused guidance with real reach and consistently high feedback."
+            title={"Impact over last 5years."}
+            subtitle={undefined}
           />
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((s) => (
@@ -217,6 +192,7 @@ function Stats() {
                       </div>
                       <p className="text-2xl md:text-3xl font-semibold text-white tracking-tight">{s.value}</p>
                       <p className="mt-1 text-sm text-zinc-400">{s.label}</p>
+                      {s.subtitle && <p className="text-xs text-zinc-500 mt-0.5">{s.subtitle}</p>}
                     </GlassCard>
                   </div>
                 </div>
