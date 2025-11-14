@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   Calendar,
   CheckCircle2,
-  ChevronDown,
   ChevronRight,
   ExternalLink,
   Menu,
@@ -41,7 +40,6 @@ function Navbar() {
     { label: 'Offerings', href: '#offerings' },
     { label: 'Live Session', href: '#agenda' },
     { label: 'Mentors', href: '#mentors' },
-    { label: 'Testimonials', href: '#testimonials' },
   ]
   const airtableUrl = 'https://airtable.com/appGPgtEBYio3Pufz/pagm1OHsUAJTxJJni/form?prefill_Source=website&hide_Source=true'
   return (
@@ -532,74 +530,12 @@ function Offerings() {
   )
 }
 
-function Testimonials() {
-  const all = useMemo(
-    () => [
-      { name: 'Aarav, JEE 2024', text: 'Crystal-clear on CLD/CHD and alternate routes. Saved months of confusion.' },
-      { name: 'Parent, Hyderabad', text: 'Balanced, realistic advice. No hype—just experience.' },
-      { name: 'Khushi, XI', text: 'The branch selection framework was gold. Now I know CS vs ECE for me.' },
-      { name: 'Rahul, NRI', text: 'DASA and ASCA explained like a friend. We finally know the roadmap.' },
-      { name: 'Meera, XII', text: 'Hearing about life at Google London was so motivating.' },
-      { name: 'Aniket, Pune', text: 'Loved the Q&A—practical tips I can apply this week.' },
-      { name: 'Priya, Parent', text: '45 minutes packed with specifics. Worth every rupee.' },
-      { name: 'Sahil, Kota', text: 'Group session at our coaching was eye-opening and fun.' },
-    ],
-    []
-  )
-  const [expanded, setExpanded] = useState(false)
-  const visible = expanded ? all : all.slice(0, 6)
-  return (
-    <section id="testimonials" className="relative bg-black border-t border-white/10">
-      <Container>
-        <div className="py-20">
-          <SectionHeader
-            eyebrow="Social proof"
-            title="What students and parents say"
-            subtitle="Short, honest notes captured after sessions."
-          />
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {visible.map((t, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.03 }}
-                className="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 flex flex-col justify-between"
-              >
-                <p className="text-zinc-300">“{t.text}”</p>
-                <div className="mt-4 text-sm text-zinc-400">— {t.name}</div>
-              </motion.div>
-            ))}
-            <div className="rounded-2xl bg-gradient-to-br from-white/10 to-white/[0.06] ring-1 ring-white/10 p-6 flex items-center justify-center">
-              <button onClick={() => setExpanded(!expanded)} className="inline-flex items-center gap-2 text-white/90 hover:text-white">
-                {expanded ? 'Show less' : 'Show more'} <ChevronDown className={`h-4 w-4 transition-transform ${expanded ? 'rotate-180' : ''}`} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </Container>
-    </section>
-  )
-}
-
 function Footer() {
   return (
     <footer className="relative bg-black border-t border-white/10">
       <Container>
         <div className="py-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="h-7 w-7 rounded-md bg-gradient-to-tr from-zinc-200 via-white to-zinc-300" />
-              <div className="text-sm text-zinc-400">Premium guidance for ambitious students.</div>
-            </div>
-            <div className="flex items-center gap-6 text-sm text-zinc-400">
-              <a href="#agenda" className="hover:text-zinc-200">Agenda</a>
-              <a href="#offerings" className="hover:text-zinc-200">Offerings</a>
-              <a href="#testimonials" className="hover:text-zinc-200">Testimonials</a>
-            </div>
-          </div>
-          <div className="mt-6 text-xs text-zinc-500">© {new Date().getFullYear()} Veteran Mentors. All rights reserved.</div>
+          <div className="text-xs text-zinc-500">© 2025 AlgoUniversity. All rights reserved.</div>
         </div>
       </Container>
     </footer>
@@ -610,13 +546,12 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
-      {/* Order per request: 1) Hero 2) Stats 3) Offering Session 4) Master Session 5) Meet the mentor 6) Testimonials */}
+      {/* Order per request: 1) Hero 2) Stats 3) Offering Session 4) Master Session 5) Meet the mentor */}
       <Hero />
       <Stats />
       <Offerings />
       <Agenda />
       <Mentors />
-      <Testimonials />
       <Footer />
     </div>
   )
