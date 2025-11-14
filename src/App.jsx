@@ -184,31 +184,40 @@ const GlassCard = ({ children, className = '' }) => (
 
 function Stats() {
   const stats = [
-    { label: 'Students Guided', value: '2,300+', icon: Users, hue: 'from-emerald-400/20 to-emerald-300/0' },
-    { label: 'Schools & Coachings', value: '40+', icon: GraduationCap, hue: 'from-sky-400/20 to-sky-300/0' },
-    { label: 'Avg. Session Rating', value: '4.9/5', icon: Star, hue: 'from-amber-400/20 to-amber-300/0' },
-    { label: 'Cities Reached', value: '18', icon: MapPin, hue: 'from-fuchsia-400/20 to-fuchsia-300/0' },
+    { label: 'Students Guided', value: '2,300+', icon: Users, hue: 'from-emerald-400/20 to-emerald-300/0', ring: 'ring-emerald-400/40', glow: 'shadow-[0_0_36px_rgba(16,185,129,0.25)]' },
+    { label: 'Schools & Coachings', value: '40+', icon: GraduationCap, hue: 'from-sky-400/20 to-sky-300/0', ring: 'ring-sky-400/40', glow: 'shadow-[0_0_36px_rgba(56,189,248,0.22)]' },
+    { label: 'Avg. Session Rating', value: '4.9/5', icon: Star, hue: 'from-amber-400/20 to-amber-300/0', ring: 'ring-amber-400/40', glow: 'shadow-[0_0_36px_rgba(251,191,36,0.25)]' },
+    { label: 'Cities Reached', value: '18', icon: MapPin, hue: 'from-fuchsia-400/20 to-fuchsia-300/0', ring: 'ring-fuchsia-400/40', glow: 'shadow-[0_0_36px_rgba(232,121,249,0.25)]' },
   ]
   return (
-    <section className="relative border-t border-white/10 bg-[radial-gradient(1200px_600px_at_20%_-20%,rgba(99,102,241,0.18),transparent),radial-gradient(1000px_500px_at_90%_20%,rgba(16,185,129,0.14),transparent)]">
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.06),transparent_30%),radial-gradient(ellipse_at_bottom,rgba(255,255,255,0.06),transparent_60%)]" />
+    <section className="relative border-t border-white/10 bg-[radial-gradient(1100px_520px_at_15%_-10%,rgba(255,213,0,0.12),transparent),radial-gradient(900px_480px_at_90%_0%,rgba(255,115,0,0.10),transparent),linear-gradient(to_bottom,#060606,#0b0b0b)]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(255,180,0,0.10),transparent_60%)]" />
       <Container>
         <div className="py-18 md:py-20">
           <SectionHeader
             eyebrow="Snapshot"
-            title="Outcomes that matter"
+            title={
+              <>
+                <span className="relative inline-block pr-1">
+                  <span className="relative z-10">Outcomes</span>
+                  <span className="pointer-events-none absolute left-0 right-0 -bottom-0.5 h-2 rounded-full bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-500 blur-[2px] opacity-90" />
+                  <span className="pointer-events-none absolute left-0 right-0 -bottom-0.5 h-[2px] bg-gradient-to-r from-yellow-300 to-orange-400" />
+                </span>{' '}
+                that matter
+              </>
+            }
             subtitle="Focused guidance with real reach and consistently high feedback."
           />
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((s, idx) => (
+            {stats.map((s) => (
               <motion.div
                 key={s.label}
                 whileHover={{ y: -6, scale: 1.01 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 20 }}
                 className="relative"
               >
-                <div className={`rounded-2xl p-[1px] bg-gradient-to-br ${s.hue}`}>
-                  <div className="relative rounded-2xl h-full w-full overflow-hidden">
+                <div className={`rounded-2xl p-[1.5px] bg-gradient-to-br ${s.hue}`}>
+                  <div className={`relative rounded-2xl h-full w-full overflow-hidden ring-2 ${s.ring} ${s.glow} transition-shadow`}>
                     <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.12),transparent_40%)] opacity-60" />
                     <GlassCard className="relative p-6 text-center bg-[rgba(12,12,12,0.55)]">
                       <div className="mx-auto mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 ring-1 ring-white/10">
