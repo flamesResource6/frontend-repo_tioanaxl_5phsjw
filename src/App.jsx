@@ -472,6 +472,52 @@ function Mentors() {
   )
 }
 
+function ProudToBe() {
+  const items = [
+    { src: 'https://i.ibb.co/ymFHPmFM/Apaar-ASCSAI-Deck.jpg', alt: 'Gallery 1', className: 'col-span-2 row-span-2' },
+    { src: 'https://i.ibb.co/FTmk0gV/1000115233.jpg', alt: 'Gallery 2', className: '' },
+    { src: 'https://i.ibb.co/N26gR2fF/Apaar-ASCSAI-Deck-1.jpg', alt: 'Gallery 3', className: 'row-span-2' },
+    { src: 'https://i.ibb.co/gFB6hLqM/1000115232.jpg', alt: 'Gallery 4', className: '' },
+    { src: 'https://i.ibb.co/wNZ8ch8p/Apaar-ASCSAI-Deck-2.jpg', alt: 'Gallery 5', className: 'col-span-2' },
+    { src: 'https://i.ibb.co/vvgcXyKg/1000115231.jpg', alt: 'Gallery 6', className: '' },
+  ]
+
+  return (
+    <section className="relative bg-black border-t border-white/10">
+      <Container>
+        <div className="py-20">
+          <SectionHeader
+            eyebrow="Proud to be"
+            title="Proud to be"
+            subtitle="Snapshots from our journey, community and sessions."
+          />
+
+          <div className="mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 auto-rows-[120px] md:auto-rows-[140px] gap-4">
+              {items.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                  className={`relative group ${item.className}`}
+                >
+                  <div className="h-full w-full overflow-hidden ring-2 ring-white/70 group-hover:ring-white transition rounded-xl bg-white/5">
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="h-full w-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  )
+}
+
 function Offerings() {
   return (
     <section id="offerings" className="relative bg-black border-t border-white/10">
@@ -550,12 +596,13 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
-      {/* Order per request: 1) Hero 2) Stats 3) Offering Session 4) Master Session 5) Meet the mentor */}
+      {/* Order per request: 1) Hero 2) Stats 3) Offering Session 4) Master Session 5) Meet the mentor 6) Proud to be 7) Footer */}
       <Hero />
       <Stats />
       <Offerings />
       <Agenda />
       <Mentors />
+      <ProudToBe />
       <Footer />
     </div>
   )
