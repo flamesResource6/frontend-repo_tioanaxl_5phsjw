@@ -173,7 +173,7 @@ function Stats() {
           <SectionHeader
             eyebrow="Snapshot"
             title={"Impact over last 5years."}
-            subtitle={undefined}
+            subtitle={"Focused guidance with real reach and consistently high feedback."}
           />
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((s) => (
@@ -181,12 +181,12 @@ function Stats() {
                 key={s.label}
                 whileHover={{ y: -6, scale: 1.01 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                className="relative"
+                className="relative h-full"
               >
-                <div className={`rounded-2xl p-[1.5px] bg-gradient-to-br ${s.hue}`}>
+                <div className={`rounded-2xl p-[1.5px] bg-gradient-to-br ${s.hue} h-full`}>
                   <div className={`relative rounded-2xl h-full w-full overflow-hidden ring-2 ${s.ring} ${s.glow} transition-shadow`}>
                     <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.12),transparent_40%)] opacity-60" />
-                    <GlassCard className="relative p-6 text-center bg-[rgba(12,12,12,0.55)]">
+                    <GlassCard className="relative p-6 text-center bg-[rgba(12,12,12,0.55)] h-full flex flex-col items-center justify-center">
                       <div className="mx-auto mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 ring-1 ring-white/10">
                         {React.createElement(s.icon, { className: 'h-4.5 w-4.5 text-white/80' })}
                       </div>
@@ -472,27 +472,28 @@ function Offerings() {
         <div className="py-20">
           <SectionHeader
             eyebrow="What we offer"
-            title="Flexible formats for every need"
+            title="Flexible sessions for every need."
             subtitle="Choose a free group masterclass for selected institutions or a focused 1:1 session."
           />
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
             <motion.div whileHover={{ y: -4 }} className="relative">
-              <GlassCard className="p-8 flex flex-col justify-between h-full ring-2 ring-white/70 hover:ring-white transition">
+              <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-white/30 to-transparent opacity-40 pointer-events-none" />
+              <GlassCard className="relative p-8 flex flex-col justify-between h-full ring-2 ring-white/70 hover:ring-white transition">
                 <div>
                   <p className="text-white text-xl font-medium">Group Sessions</p>
                   <p className="mt-2 text-zinc-400">
                     Free for handpicked elite coachings and schools. Invite us for an on-campus masterclass.
                   </p>
                 </div>
-                <a href="tel:+919999999999" className="mt-6 inline-flex items-center gap-2 w-max rounded-full bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-zinc-100 transition-colors">
-                  <Phone className="h-4 w-4" /> +91 99999 99999
+                <a href="tel:+917032058474" className="mt-6 inline-flex items-center gap-2 w-max rounded-full bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-zinc-100 transition-colors">
+                  <Phone className="h-4 w-4" /> +91-7032058474
                 </a>
               </GlassCard>
             </motion.div>
 
             <motion.div whileHover={{ y: -4 }} id="book" className="relative">
               <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-white/30 to-transparent opacity-40 pointer-events-none" />
-              <GlassCard className="relative p-8 ring-2 ring-white/70 hover:ring-white transition">
+              <GlassCard className="relative p-8 ring-2 ring-white/70 hover:ring-white transition h-full">
                 <p className="text-white text-xl font-medium">1:1 Parent–Student Career Counseling</p>
                 <ul className="mt-4 space-y-2 text-sm text-zinc-300">
                   <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 mt-0.5 text-emerald-400" /> 45 minutes deep-dive tailored to your context</li>
