@@ -254,60 +254,167 @@ function Stats() {
 }
 
 function Agenda() {
-  const topics = [
-    {
-      title: "Less-known routes: IIIT Hyderabad's CLD / CHD exam",
-      desc: 'Understand patterns, prep strategies, and how they differ from JEE mains/adv.',
-      tint: 'from-sky-400/25',
+  const session = {
+    topic: 'Choosing Your Best-Fit Path: CLD/CHD, DASA & Smart Branch Decisions',
+    live: true,
+    datetime: 'Sat, 23 Nov · 6:00–7:15 PM IST',
+    bullets: [
+      'CLD/CHD at IIIT-H: pattern, prep lens, realistic cutoffs',
+      'DASA/ASCA eligibility and timelines—what actually matters',
+      'Branch selection framework: CS vs AI/ML vs ECE (with examples)',
+      'Q&A: targeting 2025/26—practical next 30 days',
+    ],
+    mentor: {
+      name: 'Swapnil',
+      title: 'IIIT Hyderabad • Ex Apple • Ex Google London',
+      avatar:
+        'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop',
+      tags: ['IIIT-H Alumni', 'BigTech Mentor', 'Product & CS', 'CLD/CHD']
     },
-    {
-      title: 'DASA quota rules & ASCA scholarships',
-      desc: 'For NRI/PIO—clarity on eligibility, timelines, and realistic options.',
-      tint: 'from-emerald-400/25',
-    },
-    {
-      title: 'Selecting branch: Is CS & AI right for you?',
-      desc: 'Frameworks to decide between CS, AI/ML, ECE, and interdisciplinary choices.',
-      tint: 'from-amber-400/25',
-    },
-    {
-      title: 'Life at Google London & Apple at 19',
-      desc: 'Candid stories: work culture, impact, compensation, and expectations.',
-      tint: 'from-fuchsia-400/25',
-    },
-  ]
+  }
+
   return (
-    <section id="agenda" className="relative bg-[radial-gradient(1000px_500px_at_0%_0%,rgba(59,130,246,0.08),transparent),linear-gradient(to_bottom,#050505,#0b0b0b)]">
+    <section
+      id="agenda"
+      className="relative border-t border-white/10 bg-[radial-gradient(1400px_600px_at_10%_-10%,rgba(59,130,246,0.12),transparent),linear-gradient(to_bottom,#f6f7fb,#eef0f5)] text-slate-900"
+    >
       <Container>
         <div className="py-20">
-          <SectionHeader
-            eyebrow="Agenda"
-            title="Master Sessions"
-            subtitle="Deep-dives designed for ambitious students and parents. Minimal fluff, maximum clarity."
-          />
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {topics.map((t, i) => (
-              <motion.div
-                key={t.title}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: i * 0.05 }}
-                className={`group rounded-2xl p-[1px] bg-gradient-to-b from-white/10 to-white/5`}
-              >
-                <div className="h-full rounded-2xl bg-black/70 p-6 ring-1 ring-white/10 relative overflow-hidden">
-                  <div className={`pointer-events-none absolute -left-24 top-0 h-full w-48 bg-gradient-to-b opacity-20 blur-2xl ${t.tint} to-transparent`} />
-                  <div className="flex items-start justify-between gap-6">
-                    <h3 className="text-white text-lg font-medium leading-snug max-w-[80%]">{t.title}</h3>
-                    <ChevronRight className="h-5 w-5 text-white/50 group-hover:text-white transition-colors" />
+          {/* Light header variant to sit on the light background */}
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-300/60 bg-white/80 px-3 py-1 text-[11px] uppercase tracking-widest text-slate-700 backdrop-blur">
+              <Sparkles className="h-3.5 w-3.5" /> Agenda
+            </div>
+            <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-slate-900">Master Session</h2>
+            <p className="mt-3 text-slate-600 max-w-2xl">
+              LIVE deep-dive happening soon. Clear outcomes, zero fluff.
+            </p>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Left: Session details */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="relative"
+            >
+              <div className="rounded-2xl p-[1.5px] bg-gradient-to-br from-slate-200 to-slate-100">
+                <div className="relative rounded-2xl overflow-hidden bg-white shadow-xl ring-1 ring-slate-200">
+                  {/* tinted blur sweep */}
+                  <div className="pointer-events-none absolute -left-24 top-0 h-full w-56 bg-gradient-to-b from-sky-400/20 to-emerald-300/0 blur-2xl" />
+
+                  <div className="p-6 md:p-8">
+                    <div className="flex items-center justify-between gap-4">
+                      <h3 className="text-xl md:text-2xl font-semibold leading-snug text-slate-900 max-w-[80%]">
+                        {session.topic}
+                      </h3>
+                      {session.live ? (
+                        <span className="inline-flex items-center gap-2 rounded-full bg-red-500/10 text-red-600 px-3 py-1 text-xs font-semibold ring-1 ring-red-500/30">
+                          <span className="relative flex h-2.5 w-2.5">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500/80 opacity-75"></span>
+                            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500"></span>
+                          </span>
+                          LIVE
+                        </span>
+                      ) : null}
+                    </div>
+
+                    <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-slate-100 text-slate-700 px-3 py-1 text-xs ring-1 ring-slate-200">
+                      <Calendar className="h-3.5 w-3.5" /> {session.datetime}
+                    </div>
+
+                    <div className="mt-6 grid gap-3">
+                      {session.bullets.map((b, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <div className="mt-0.5">
+                            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-900 text-white">
+                              {i + 1}
+                            </div>
+                          </div>
+                          <p className="text-slate-700">{b}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-7 flex flex-wrap items-center gap-3">
+                      <a
+                        href="#book"
+                        className="inline-flex items-center gap-2 rounded-full bg-slate-900 text-white px-4 py-2 text-sm font-medium hover:bg-black transition-colors"
+                      >
+                        Save your seat <ChevronRight className="h-4 w-4" />
+                      </a>
+                      <a
+                        href="#mentors"
+                        className="inline-flex items-center gap-2 rounded-full bg-white text-slate-900 px-4 py-2 text-sm font-medium ring-1 ring-slate-300 hover:bg-slate-50"
+                      >
+                        Meet the mentors
+                      </a>
+                    </div>
                   </div>
-                  <p className="mt-3 text-sm text-zinc-400">{t.desc}</p>
                 </div>
-              </motion.div>
-            ))}
+              </div>
+            </motion.div>
+
+            {/* Right: Mentor highlight */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="relative"
+            >
+              <div className="rounded-2xl p-[1.5px] bg-gradient-to-br from-slate-200 to-slate-100">
+                <div className="relative rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200">
+                  <div className="absolute inset-0">
+                    <div className="absolute inset-0 bg-[radial-gradient(800px_200px_at_80%_-20%,rgba(99,102,241,0.15),transparent)]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(600px_200px_at_0%_100%,rgba(16,185,129,0.12),transparent)]" />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2">
+                    <div className="relative h-64 sm:h-full">
+                      <img
+                        src={session.mentor.avatar}
+                        alt={session.mentor.name}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-slate-900/10 to-transparent" />
+                    </div>
+                    <div className="p-6 md:p-8 flex flex-col">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-base font-semibold text-slate-900">{session.mentor.name}</p>
+                          <p className="text-sm text-slate-600">{session.mentor.title}</p>
+                        </div>
+                        <BadgeCheck className="h-5 w-5 text-slate-500" />
+                      </div>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {session.mentor.tags.map((t) => (
+                          <span key={t} className="rounded-full border border-slate-300 bg-white/70 backdrop-blur px-2.5 py-1 text-[11px] text-slate-700">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="mt-6 grid grid-cols-2 gap-3">
+                        <a href="#book" className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 text-white px-4 py-2.5 text-sm font-medium hover:bg-black transition-colors">
+                          Book 1:1
+                        </a>
+                        <a href="#offerings" className="inline-flex items-center justify-center gap-2 rounded-xl bg-white text-slate-900 px-4 py-2.5 text-sm font-medium ring-1 ring-slate-300 hover:bg-slate-50">
+                          Group session
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </Container>
+
+      {/* subtle top/bottom separators so the light block blends into dark theme */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-black/40 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/30 to-transparent" />
     </section>
   )
 }
