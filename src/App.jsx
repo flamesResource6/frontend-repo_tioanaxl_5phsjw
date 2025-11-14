@@ -125,20 +125,14 @@ function Hero() {
               <a href="#book" className="inline-flex items-center justify-center rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-zinc-100 transition-colors">
                 Book 1:1 Counseling
               </a>
-              <a href="#agenda" className="inline-flex items-center justify-center rounded-full bg-white/10 text-white px-6 py-3 text-sm font-medium hover:bg-white/20 transition-colors">
-                Explore Master Sessions
-              </a>
+              {/* Yellow gradient crisp border button */}
+              <span className="inline-flex rounded-full p-[1.5px] bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-400">
+                <a href="#agenda" className="inline-flex items-center justify-center rounded-full bg-black/55 text-white px-6 py-3 text-sm font-medium hover:bg-black/60 transition-colors">
+                  Explore Live Master Sessions
+                </a>
+              </span>
             </div>
-            <div className="mt-8 flex items-center gap-6 text-zinc-400">
-              <div className="flex items-center gap-2">
-                <Users className="h-4 w-4" />
-                <span>3 mentors • ex BigTech</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Star className="h-4 w-4" />
-                <span>Apple-level polish</span>
-              </div>
-            </div>
+            {/* Removed the small feature line under buttons per request */}
           </div>
         </div>
       </Container>
