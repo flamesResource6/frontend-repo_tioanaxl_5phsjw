@@ -81,7 +81,7 @@ function Navbar() {
               className="md:hidden grid gap-2 pb-4"
             >
               {navItems.map((n) => (
-                <a key={n.href} href={n.href} className="text-zinc-300 hover:text-white transition-colors text-sm py-2 border-t border-white/10">
+                <a key={n.href} href={n.href} className="text-zinc-300 hover:text-white transition-colors text-sm py-2 border-top border-white/10">
                   {n.label}
                 </a>
               ))}
@@ -266,7 +266,8 @@ function Agenda() {
     ],
     mentor: {
       name: 'Swapnil Daga',
-      title: 'Guided over 50,000+ learners in their career so far. Right after college, Swapnil has cracked Google London & then moved on to Apple India. Currently leads teaching infra at AlgoUniversity.',
+      title:
+        'Guided over 50,000+ learners in their career so far. Right after college, Swapnil has cracked Google London & then moved on to Apple India. Currently leads teaching infra at AlgoUniversity.',
       avatar:
         'https://i.ibb.co/CsTh9Pm0/Copy-of-ASCSAI-Deck-1.png',
       tags: ['IIIT-Hyd Alumni', 'ECE'],
@@ -284,7 +285,6 @@ function Agenda() {
     >
       <Container>
         <div className="py-20">
-          {/* Light header variant to sit on the light background */}
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-slate-300/60 bg-white/80 px-3 py-1 text-[11px] uppercase tracking-widest text-slate-700 backdrop-blur">
               <Sparkles className="h-3.5 w-3.5" /> Agenda
@@ -295,18 +295,20 @@ function Agenda() {
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Left: Session details with a sharp, powerful border */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="relative"
-            >
-              <div className="relative rounded-2xl overflow-hidden bg-white shadow-xl ring-2 ring-slate-900/15">
-                {/* tinted blur sweep */}
-                <div className="pointer-events-none absolute -left-24 top-0 h-full w-56 bg-gradient-to-b from-sky-400/20 to-emerald-300/0 blur-2xl" />
+          {/* Unified single card with left-right layout; mentor panel uses top-bottom inside */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            className="mt-10 relative"
+          >
+            <div className="relative overflow-hidden rounded-2xl bg-white shadow-xl ring-2 ring-slate-900/15">
+              {/* subtle color sweeps */}
+              <div className="pointer-events-none absolute -left-24 top-0 h-full w-56 bg-gradient-to-b from-sky-400/20 to-emerald-300/0 blur-2xl" />
+              <div className="pointer-events-none absolute -right-24 bottom-0 h-40 w-72 bg-gradient-to-tr from-amber-300/20 to-fuchsia-300/0 blur-2xl" />
 
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                {/* Left column: agenda details */}
                 <div className="p-6 md:p-8">
                   <div className="flex items-center justify-between gap-4">
                     <h3 className="text-xl md:text-2xl font-semibold leading-snug text-slate-900 max-w-[80%]">
@@ -355,64 +357,51 @@ function Agenda() {
                     </a>
                   </div>
                 </div>
-              </div>
-            </motion.div>
 
-            {/* Right: Mentor highlight (no Book 1:1 or Group Session buttons here) */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="relative"
-            >
-              <div className="rounded-2xl p-[1.5px] bg-gradient-to-br from-slate-200 to-slate-100">
-                <div className="relative rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200">
-                  <div className="absolute inset-0">
-                    <div className="absolute inset-0 bg-[radial-gradient(800px_200px_at_80%_-20%,rgba(99,102,241,0.15),transparent)]" />
-                    <div className="absolute inset-0 bg-[radial-gradient(600px_200px_at_0%_100%,rgba(16,185,129,0.12),transparent)]" />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2">
-                    <div className="relative h-64 sm:h-full">
+                {/* Right column: mentor highlight (top image, bottom content) */}
+                <div className="border-t lg:border-t-0 lg:border-l border-slate-200/70 bg-white/60 backdrop-blur-sm">
+                  <div className="flex flex-col">
+                    {/* Top: image */}
+                    <div className="relative h-56 sm:h-64 md:h-72 lg:h-64">
                       <img
                         src={session.mentor.avatar}
                         alt={session.mentor.name}
                         className="absolute inset-0 h-full w-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-slate-900/10 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-slate-900/10 to-transparent" />
                     </div>
-                    <div className="p-6 md:p-8 flex flex-col">
-                      <div className="flex items-center justify-between">
+                    {/* Bottom: text, tags, logos */}
+                    <div className="p-6 md:p-8">
+                      <div className="flex items-start justify-between gap-4">
                         <div>
                           <p className="text-base font-semibold text-slate-900">{session.mentor.name}</p>
-                          <p className="mt-1 text-sm text-slate-600 leading-relaxed">{session.mentor.title}</p>
+                          <p className="mt-1 text-sm text-slate-700 leading-relaxed">{session.mentor.title}</p>
                         </div>
                         <BadgeCheck className="h-5 w-5 text-slate-500" />
                       </div>
 
                       <div className="mt-4 flex flex-wrap gap-2">
                         {session.mentor.tags.map((t) => (
-                          <span key={t} className="rounded-full border border-slate-300 bg-white/70 backdrop-blur px-2.5 py-1 text-[11px] text-slate-700">
+                          <span key={t} className="rounded-full border border-slate-300 bg-white/80 backdrop-blur px-2.5 py-1 text-[11px] text-slate-700">
                             {t}
                           </span>
                         ))}
                       </div>
 
-                      <div className="mt-5 flex items-center gap-4">
+                      <div className="mt-5 flex items-center gap-6">
                         {session.mentor.logos.map((logo, idx) => (
                           <div key={idx} className="h-6 w-auto">
-                            <img src={logo} alt="logo" className="h-6 w-auto object-contain grayscale opacity-80" />
+                            {/* Keep original brand colors; add gentle drop shadow for contrast */}
+                            <img src={logo} alt="logo" className="h-6 w-auto object-contain drop-shadow-[0_1px_6px_rgba(0,0,0,0.12)]" />
                           </div>
                         ))}
                       </div>
-
-                      {/* Buttons intentionally omitted here as requested */}
                     </div>
                   </div>
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </Container>
 
